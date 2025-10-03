@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal webpage of Ryan TJX">
+    <title>Ryan TJX - Personal Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ryan TJX</h1>
+            <p class="subtitle">Welcome to my personal webpage</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-button active" onclick="openTab(event, 'resume')">Resume</button>
+            <button class="tab-button" onclick="openTab(event, 'cv')">CV</button>
+            <button class="tab-button" onclick="openTab(event, 'contact')">Contact</button>
+            <button class="tab-button" onclick="openTab(event, 'links')">Links</button>
+        </nav>
+
+        <main>
+            <!-- Resume Tab -->
+            <div id="resume" class="tab-content active">
+                <h2>Resume</h2>
+                <section class="content-section">
+                    <h3>Summary</h3>
+                    <p>Professional summary and key highlights of my career.</p>
+                </section>
+
+                <section class="content-section">
+                    <h3>Experience</h3>
+                    <div class="experience-item">
+                        <h4>Job Title - Company Name</h4>
+                        <p class="date">Month Year - Present</p>
+                        <ul>
+                            <li>Key responsibility or achievement</li>
+                            <li>Key responsibility or achievement</li>
+                            <li>Key responsibility or achievement</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h3>Education</h3>
+                    <div class="education-item">
+                        <h4>Degree - Institution</h4>
+                        <p class="date">Year</p>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h3>Skills</h3>
+                    <div class="skills-grid">
+                        <span class="skill-tag">Skill 1</span>
+                        <span class="skill-tag">Skill 2</span>
+                        <span class="skill-tag">Skill 3</span>
+                        <span class="skill-tag">Skill 4</span>
+                        <span class="skill-tag">Skill 5</span>
+                    </div>
+                </section>
+            </div>
+
+            <!-- CV Tab -->
+            <div id="cv" class="tab-content">
+                <h2>Curriculum Vitae</h2>
+                <section class="content-section">
+                    <h3>Academic Background</h3>
+                    <p>Detailed academic history and qualifications.</p>
+                </section>
+
+                <section class="content-section">
+                    <h3>Research Experience</h3>
+                    <div class="experience-item">
+                        <h4>Research Position - Institution</h4>
+                        <p class="date">Month Year - Month Year</p>
+                        <p>Description of research work and contributions.</p>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h3>Publications</h3>
+                    <div class="publication-item">
+                        <p>Publication Title. <em>Journal/Conference Name</em>, Year.</p>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h3>Awards and Honors</h3>
+                    <ul>
+                        <li>Award Name - Year</li>
+                        <li>Honor Name - Year</li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- Contact Tab -->
+            <div id="contact" class="tab-content">
+                <h2>Contact</h2>
+                <section class="content-section">
+                    <h3>Get in Touch</h3>
+                    <p>Feel free to reach out to me through any of the following channels:</p>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <strong>Email:</strong>
+                            <p><a href="mailto:your.email@example.com">your.email@example.com</a></p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <strong>Location:</strong>
+                            <p>City, Country</p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <strong>Phone:</strong>
+                            <p>+1 (XXX) XXX-XXXX</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Links Tab -->
+            <div id="links" class="tab-content">
+                <h2>Links</h2>
+                <section class="content-section">
+                    <h3>Professional Profiles</h3>
+                    <div class="links-grid">
+                        <a href="https://github.com/ryantjx" target="_blank" rel="noopener noreferrer" class="link-card">
+                            <h4>GitHub</h4>
+                            <p>View my code repositories and projects</p>
+                        </a>
+                        
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" class="link-card">
+                            <h4>LinkedIn</h4>
+                            <p>Connect with me professionally</p>
+                        </a>
+                        
+                        <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer" class="link-card">
+                            <h4>Twitter</h4>
+                            <p>Follow my thoughts and updates</p>
+                        </a>
+                        
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="link-card">
+                            <h4>Portfolio</h4>
+                            <p>Explore my work and projects</p>
+                        </a>
+                        
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="link-card">
+                            <h4>Blog</h4>
+                            <p>Read my articles and posts</p>
+                        </a>
+                        
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="link-card">
+                            <h4>Other Resources</h4>
+                            <p>Additional materials and links</p>
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Ryan TJX. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
