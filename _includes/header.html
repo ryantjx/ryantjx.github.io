@@ -1,0 +1,41 @@
+<header class="site-header" role="banner">
+  <div class="wrapper">
+    <div class="site-header-content">
+      <div class="site-brand">
+        <a class="site-title" rel="author" href="{{ '/' | relative_url }}">
+          <!-- {% if site.author.avatar %}
+            <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.title }}" class="site-logo">
+          {% endif %} -->
+          <span class="site-title-text">{{ site.title | escape }}</span>
+        </a>
+      </div>
+
+      <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger" class="menu-icon">
+          <span></span>
+        </label>
+
+        <div class="trigger">
+          {% for item in site.navigation %}
+            {% assign current = nil %}
+            {% if page.url == item.url %}
+              {% assign current = 'current' %}
+            {% elsif page.url contains item.url and item.url != '/' %}
+              {% assign current = 'current' %}
+            {% endif %}
+            
+            <a class="page-link {{ current }}" href="{{ item.url | relative_url }}">
+              {{ item.title }}
+            </a>
+          {% endfor %}
+          
+          <!-- Theme toggle button -->
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon" id="theme-icon"></i>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>

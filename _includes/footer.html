@@ -1,0 +1,74 @@
+<footer class="site-footer h-card">
+  <data class="u-url" href="{{ '/' | relative_url }}"></data>
+
+  <div class="wrapper">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h2 class="footer-heading">{{ site.title | escape }}</h2>
+        <p class="footer-description">{{ site.description }}</p>
+      </div>
+
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <div class="social-links">
+          {% if site.linkedin_username %}
+            <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          {% endif %}
+          {% if site.github_username %}
+            <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+          {% endif %}
+          
+
+<!--           
+          {% if site.twitter_username %}
+            <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+          {% endif %}
+          
+          {% if site.instagram_username %}
+            <a href="https://instagram.com/{{ site.instagram_username }}" target="_blank" rel="noopener" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+          {% endif %}
+          
+          {% if site.email %}
+            <a href="mailto:{{ site.email }}" aria-label="Email">
+              <i class="fas fa-envelope"></i>
+            </a>
+          {% endif %} -->
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3>Subscribe to Substack</h3>
+        <p>Hear me talk about life, technology, research and more.</p>
+        <a href="https://substack.com/@ryantjx" target="_blank" rel="noopener" class="substack-link">
+          <i class="fas fa-envelope-open-text"></i> Follow on Substack
+        </a>
+      </div>
+
+      <!-- <div class="footer-section music-section">
+        <h3>Music I listen to</h3>
+        <div class="soundcloud-player">
+          <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1830793371&color=%23042434&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+          <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
+            <a href="https://soundcloud.com/victorspeixoto" title="VSP | Victor Peixoto" target="_blank" style="color: #cccccc; text-decoration: none;">VSP | Victor Peixoto</a> · <a href="https://soundcloud.com/victorspeixoto/set-4-keinemusik-2024-pt-2" title="KEINE 2024 PT. 2 by VSP" target="_blank" style="color: #cccccc; text-decoration: none;">KEINE 2024 PT. 2 by VSP</a>
+          </div>
+        </div>
+      </div> -->
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {{ 'now' | date: "%Y" }} {{ site.author.name }}. All rights reserved.</p>
+      <p class="footer-note">
+        Built with <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> 
+        and hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>
+      </p>
+    </div>
+  </div>
+</footer>

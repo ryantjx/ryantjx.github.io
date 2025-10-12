@@ -1,0 +1,170 @@
+{
+  "education": [
+    {
+      "title": "MSc Statistics",
+      "organization": "University of Warwick",
+      "location": "Coventry, UK",
+      "period": "2023 - 2024",
+      "type": "education",
+      "category": "Master's Degree",
+      "description": "Advanced statistical methods, machine learning, and data analysis. Focused on modern statistical computing and its applications in real-world problem solving.",
+      "highlights": [
+        "Statistical Machine Learning",
+        "Bayesian Statistics",
+        "Time Series Analysis",
+        "Statistical Computing with R",
+        "Research Methods and Data Analysis"
+      ],
+      "image": "/assets/images/experiences/warwick-graduation.jpg",
+      "featured": true
+    },
+    {
+      "title": "Bachelor of Computer Science",
+      "organization": "University Example",
+      "location": "City, Country",
+      "period": "2019 - 2022",
+      "type": "education",
+      "category": "Bachelor's Degree",
+      "description": "Comprehensive computer science education covering algorithms, data structures, software engineering, and system design.",
+      "highlights": [
+        "Data Structures and Algorithms",
+        "Software Engineering Principles",
+        "Database Systems",
+        "Web Development",
+        "Computer Networks"
+      ],
+      "image": "/assets/images/experiences/bachelor-graduation.jpg",
+      "featured": false
+    }
+  ],
+  "professional": [
+    {
+      "title": "Full Stack Developer",
+      "organization": "Tech Startup",
+      "location": "London, UK",
+      "period": "2024 - Present",
+      "type": "professional",
+      "category": "Full-time",
+      "description": "Leading full-stack development initiatives, building scalable web applications using modern technologies and best practices.",
+      "highlights": [
+        "Built responsive web applications using React and Node.js",
+        "Implemented RESTful APIs and database optimization",
+        "Collaborated with cross-functional teams using Agile methodologies",
+        "Mentored junior developers and conducted code reviews",
+        "Deployed applications using Docker and AWS services"
+      ],
+      "technologies": [
+        "JavaScript/TypeScript",
+        "React",
+        "Node.js",
+        "PostgreSQL",
+        "Docker",
+        "AWS"
+      ],
+      "image": "/assets/images/experiences/current-job.jpg",
+      "featured": true
+    },
+    {
+      "title": "Software Engineering Intern",
+      "organization": "Tech Company",
+      "location": "Remote",
+      "period": "Summer 2023",
+      "type": "professional",
+      "category": "Internship",
+      "description": "Developed web applications and contributed to open-source projects while learning industry best practices.",
+      "highlights": [
+        "Contributed to multiple open-source projects",
+        "Built a customer dashboard using Vue.js",
+        "Implemented automated testing suites",
+        "Participated in daily standups and sprint planning"
+      ],
+      "technologies": [
+        "Vue.js",
+        "Python",
+        "Django",
+        "PostgreSQL",
+        "Jest"
+      ],
+      "image": "/assets/images/experiences/internship.jpg",
+      "featured": false
+    }
+  ],
+  "projects": [
+    {
+      "title": "Personal Portfolio Website",
+      "organization": "Personal Project",
+      "location": "Remote",
+      "period": "2024",
+      "type": "projects",
+      "category": "Web Development",
+      "description": "Built a modern, responsive portfolio website using Jekyll with custom styling and dynamic content loading.",
+      "highlights": [
+        "Designed responsive layout with CSS Grid and Flexbox",
+        "Implemented dynamic content loading with JavaScript",
+        "Optimized for performance and accessibility",
+        "Deployed using GitHub Pages with custom domain"
+      ],
+      "technologies": [
+        "Jekyll",
+        "SCSS",
+        "JavaScript",
+        "GitHub Pages"
+      ],
+      "link": "https://ryantjx.github.io",
+      "github": "https://github.com/ryantjx/ryantjx.github.io",
+      "image": "/assets/images/experiences/portfolio-project.jpg",
+      "featured": true
+    },
+    {
+      "title": "E-commerce Web Application",
+      "organization": "Academic Project",
+      "location": "University",
+      "period": "2023",
+      "type": "projects",
+      "category": "Full-stack Development",
+      "description": "Comprehensive e-commerce platform with user authentication, product catalog, shopping cart, and payment integration.",
+      "highlights": [
+        "Built RESTful API with Node.js and Express",
+        "Implemented user authentication and authorization",
+        "Created responsive frontend with React",
+        "Integrated payment processing with Stripe",
+        "Set up automated testing and CI/CD pipeline"
+      ],
+      "technologies": [
+        "React",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Stripe API",
+        "Jest"
+      ],
+      "github": "https://github.com/ryantjx/ecommerce-app",
+      "image": "/assets/images/experiences/ecommerce-project.jpg",
+      "featured": false
+    },
+    {
+      "title": "Data Analysis Dashboard",
+      "organization": "Freelance Project",
+      "location": "Remote",
+      "period": "2023",
+      "type": "projects",
+      "category": "Data Visualization",
+      "description": "Interactive dashboard for visualizing and analyzing business metrics with real-time data updates.",
+      "highlights": [
+        "Built interactive charts using D3.js and Chart.js",
+        "Implemented real-time data streaming",
+        "Created responsive design for mobile and desktop",
+        "Optimized database queries for large datasets"
+      ],
+      "technologies": [
+        "Python",
+        "Flask",
+        "D3.js",
+        "PostgreSQL",
+        "Redis"
+      ],
+      "image": "/assets/images/experiences/dashboard-project.jpg",
+      "featured": false
+    }
+  ]
+}

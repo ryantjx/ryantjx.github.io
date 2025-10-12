@@ -1,0 +1,106 @@
+# Site settings
+title: "ryantjx"
+# email: your-email@example.com
+description: >-
+  Personal website of Ryan Tan (10/10/2025).
+
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://ryantjx.github.io" # the base hostname & protocol for your site
+
+# Social media and contact links
+# twitter_username: your_twitter
+github_username: ryantjx
+linkedin_username: ryantjx
+# instagram_username: your_instagram
+
+# Author information
+author:
+  name: "Ryan"
+  # bio: "MSc Statistics at the University of Warwick"
+  avatar: "assets/images/profile/ryan-main.jpg" 
+  # location: "United Kingdom"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-redirect-from
+
+# Pagination
+paginate: 5
+paginate_path: "/blog/page:num/"
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /:collection/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: true
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - README.md
+
+# Sass/SCSS settings
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# SEO settings
+google_analytics: # Your Google Analytics tracking ID
+lang: en_US
+timezone: America/New_York # Change to your timezone
+
+# Navigation menu
+navigation:
+  - title: "About"
+    url: "/"
+  - title: "CV"
+    url: "/cv/"
+  - title: "Projects"
+    url: "/projects/"
+  - title: "Blog"
+    url: "/blog/"
+  - title: "Books"
+    url: "/books/"
+
+# Footer links
+footer:
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/ryantjx"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/ryantjx/"
+    # - label: "Email"
+    #   icon: "fas fa-fw fa-envelope-square"
+    #   url: "mailto:your-email@example.com"

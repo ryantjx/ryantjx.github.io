@@ -1,0 +1,221 @@
+---
+layout: page
+<!-- title: Books I've Read -->
+permalink: /books/
+---
+
+<div class="books-page">
+  <div class="books-intro">
+    <p>Here's a collection of books that are on my reading list. From fiction to non-fiction, each book that I have read has contributed to the way I think about things.</p>
+    <p>Area under construction!</p>
+  </div>
+
+  <!-- {% if site.data.books.currently_reading %}
+  <div class="book-subsection">
+    <h3 class="subsection-title">
+      <i class="fas fa-book-reader"></i>
+      Currently Reading
+    </h3>
+    <div class="books-grid">
+      {% for book in site.data.books.currently_reading %}
+        <div class="book-card reading-progress">
+          <div class="book-cover">
+            {% if book.cover_url %}
+              <img src="{{ book.cover_url }}" alt="{{ book.title }}" class="book-image">
+            {% else %}
+              <div class="book-placeholder">
+                <i class="fas fa-book-open"></i>
+              </div>
+            {% endif %}
+            <div class="progress-overlay">
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: {{ book.progress }}%"></div>
+              </div>
+              <span class="progress-text">{{ book.progress }}%</span>
+            </div>
+          </div>
+          <div class="book-content">
+            <h4 class="book-title">{{ book.title }}</h4>
+            <p class="book-author">by {{ book.author }}</p>
+            <p class="book-review">{{ book.review }}</p>
+            <div class="book-meta">
+              <span class="book-category">{{ book.category }}</span>
+              <span class="date-read">Started: {{ book.started_date | date: "%B %Y" }}</span>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if site.data.books.technical_books %}
+  <div class="book-subsection">
+    <h3 class="subsection-title">
+      <i class="fas fa-laptop-code"></i>
+      Technical & Programming
+    </h3>
+    <div class="books-grid">
+      {% for book in site.data.books.technical_books %}
+        <div class="book-card">
+          <div class="book-cover">
+            {% if book.cover_url %}
+              <img src="{{ book.cover_url }}" alt="{{ book.title }}" class="book-image">
+            {% else %}
+              <div class="book-placeholder">
+                <i class="fas fa-book"></i>
+              </div>
+            {% endif %}
+          </div>
+          <div class="book-content">
+            <h4 class="book-title">{{ book.title }}</h4>
+            <p class="book-author">by {{ book.author }}</p>
+            <div class="book-rating">
+              {% for i in (1..5) %}
+                {% if i <= book.rating %}
+                  <i class="fas fa-star"></i>
+                {% else %}
+                  <i class="far fa-star"></i>
+                {% endif %}
+              {% endfor %}
+              <span class="rating-text">({{ book.rating }}/5)</span>
+            </div>
+            <p class="book-review">{{ book.review }}</p>
+            <div class="book-meta">
+              <span class="book-category">{{ book.category }}</span>
+              <span class="date-read">Read: {{ book.date_read | date: "%B %Y" }}</span>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if site.data.books.personal_development %}
+  <div class="book-subsection">
+    <h3 class="subsection-title">
+      <i class="fas fa-seedling"></i>
+      Personal Development & Business
+    </h3>
+    <div class="books-grid">
+      {% for book in site.data.books.personal_development %}
+        <div class="book-card">
+          <div class="book-cover">
+            {% if book.cover_url %}
+              <img src="{{ book.cover_url }}" alt="{{ book.title }}" class="book-image">
+            {% else %}
+              <div class="book-placeholder">
+                <i class="fas fa-book"></i>
+              </div>
+            {% endif %}
+          </div>
+          <div class="book-content">
+            <h4 class="book-title">{{ book.title }}</h4>
+            <p class="book-author">by {{ book.author }}</p>
+            <div class="book-rating">
+              {% for i in (1..5) %}
+                {% if i <= book.rating %}
+                  <i class="fas fa-star"></i>
+                {% else %}
+                  <i class="far fa-star"></i>
+                {% endif %}
+              {% endfor %}
+              <span class="rating-text">({{ book.rating }}/5)</span>
+            </div>
+            <p class="book-review">{{ book.review }}</p>
+            <div class="book-meta">
+              <span class="book-category">{{ book.category }}</span>
+              <span class="date-read">Read: {{ book.date_read | date: "%B %Y" }}</span>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if site.data.books.general_interest %}
+  <div class="book-subsection">
+    <h3 class="subsection-title">
+      <i class="fas fa-globe"></i>
+      General Interest & Non-Fiction
+    </h3>
+    <div class="books-grid">
+      {% for book in site.data.books.general_interest %}
+        <div class="book-card">
+          <div class="book-cover">
+            {% if book.cover_url %}
+              <img src="{{ book.cover_url }}" alt="{{ book.title }}" class="book-image">
+            {% else %}
+              <div class="book-placeholder">
+                <i class="fas fa-book"></i>
+              </div>
+            {% endif %}
+          </div>
+          <div class="book-content">
+            <h4 class="book-title">{{ book.title }}</h4>
+            <p class="book-author">by {{ book.author }}</p>
+            <div class="book-rating">
+              {% for i in (1..5) %}
+                {% if i <= book.rating %}
+                  <i class="fas fa-star"></i>
+                {% else %}
+                  <i class="far fa-star"></i>
+                {% endif %}
+              {% endfor %}
+              <span class="rating-text">({{ book.rating }}/5)</span>
+            </div>
+            <p class="book-review">{{ book.review }}</p>
+            <div class="book-meta">
+              <span class="book-category">{{ book.category }}</span>
+              <span class="date-read">Read: {{ book.date_read | date: "%B %Y" }}</span>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if site.data.books.want_to_read %}
+  <div class="book-subsection">
+    <h3 class="subsection-title">
+      <i class="fas fa-bookmark"></i>
+      On My Reading List
+    </h3>
+    <div class="books-grid">
+      {% for book in site.data.books.want_to_read %}
+        <div class="book-card wishlist">
+          <div class="book-cover">
+            {% if book.cover_url %}
+              <img src="{{ book.cover_url }}" alt="{{ book.title }}" class="book-image">
+            {% else %}
+              <div class="book-placeholder">
+                <i class="fas fa-bookmark"></i>
+              </div>
+            {% endif %}
+          </div>
+          <div class="book-content">
+            <h4 class="book-title">{{ book.title }}</h4>
+            <p class="book-author">by {{ book.author }}</p>
+            <p class="book-review">{{ book.reason }}</p>
+            <div class="book-meta">
+              <span class="book-category">{{ book.category }}</span>
+              <span class="wishlist-badge">Want to Read</span>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if site.data.books.size == 0 %}
+    <div class="no-books">
+      <i class="fas fa-book-open"></i>
+      <h3>No books yet</h3>
+      <p>Check back soon for book reviews and recommendations!</p>
+    </div>
+  {% endif %} -->
+</div>
