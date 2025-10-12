@@ -1,0 +1,230 @@
+# Education Experiences
+education:
+  - title: "MSc Statistics"
+    organization: "University of Warwick"
+    location: "United Kingdom"
+    period: "SEP 2026"
+    type: "education"
+    category: "Master's Degree"
+    highlights:
+      - "Machine Learning"
+      - "Bayesian Statistics"
+      - "Probability Theory"
+      - "Stochastic Processes"
+    image: "/assets/images/experiences/warwick-graduation.jpg"
+    featured: true
+    
+  - title: "BSc in Business Analytics with Honours"
+    grade: "Upper Second Class (Distinction)"
+    organization: "National University of Singapore (NUS)"
+    location: "Singapore"
+    period: "MAY 2025"
+    type: "education"
+    category: "Bachelor's Degree"
+    highlights:
+      - "Probability and Statistics"
+      - "Machine Learning"
+      - "Computational Statistics"
+      - "Data Structures and Algorithms"
+      - "Object-Oriented Programming"
+    image: "/assets/images/experiences/bachelor-graduation.jpg"
+    featured: false
+
+# Professional Experiences
+professional:
+  - title: "Quant, Internship"
+    organization: "Bastion Trading: Proprietary Trading Firm"
+    location: "Singapore"
+    period: "JUL 2025 – SEP 2025"
+    type: "professional"
+    category: "Internship"
+    highlights:
+      # - "Collaborated with a Quant to research, backtest, and implement trading strategies. Achieved most profitable intern in Singapore."
+      # - "Analyzed event-driven strategies on Delta-One instruments. Developed a mean-reversion strategy on NQ-ES index arbitrage during NVDA earnings, executed by trader and generating 40bps profit."
+      # - "Conducted research on volatility strategies. Developed backtest of dispersion trading strategy on BANKNIFTY index and executed gamma scalping strategy on HK options."
+    technologies:
+      - "Python"
+      - "Quantitative Research"
+      - "Trading Strategies"
+      - "Backtesting"
+    image: "/assets/images/experiences/bastion-trading.jpg"
+    featured: true
+    
+  - title: "Quantitative Analyst, Internship and Part-Time"
+    organization: "Maven11: Digital Asset Hedge Fund"
+    location: "The Netherlands"
+    period: "SEP 2023 – JUN 2025"
+    type: "professional"
+    category: "Internship"
+    highlights:
+      # - "Led research and implementation of systematic strategies for discretionary digital asset fund."
+      # - "Deployed market research platform on AWS using Python and Grafana for front-end data visualization. Automated ETL pipelines that ingest REST API data feeds from exchanges and data providers."
+      # - "Applied statistical models to analyze market dynamics and develop quantitative signals. Developed a mean-reversion signal based on options order-book skew that achieved an 80% win rate over a three-year backtest period."
+    technologies:
+      - "Python"
+      - "AWS"
+      - "Grafana"
+      - "Statistical Models"
+      - "ETL Pipelines"
+    image: "/assets/images/experiences/maven11.jpg"
+    featured: true
+    
+  - title: "Data Analyst, Internship"
+    organization: "Stablecorp: Canadian Stablecoin issuer, NUS Overseas College Programme"
+    location: "Canada"
+    period: "AUG 2022 – JUL 2023"
+    type: "professional"
+    category: "Internship"
+    highlights:
+      # - "Assisted in the implementation market-neutral digital asset lending portfolio. Developed hedging models and risk monitoring tools using Python."
+      # - "Researched exploit risk across DeFi protocols and developed a proprietary risk score estimating historical exploit losses at 3% of TVL. Published findings in a co-authored article, \"What Happens After the Hack? A Deep Dive Into DeFi Exploits and Recoveries\"."
+    # technologies:
+    #   - "Python"
+    #   - "Risk Modeling"
+    #   - "DeFi Research"
+    #   - "Data Analysis"
+    image: "/assets/images/experiences/stablecorp.jpg"
+    featured: false
+
+# Project Experiences
+projects:
+  # - title: "Independent Trading Quantitative Research and Trading"
+  #   organization: "Personal Project"
+  #   location: "Remote"
+  #   period: "DEC 2024 - Present"
+  #   type: "projects"
+  #   category: "Quantitative Trading"
+  #   highlights:
+  #     - "Managing a self-funded portfolio with a focus on US Equities and Digital Assets. Current portfolio is +80% YTD."
+  #     - "Building infrastructure, statistical models and signals for discretionary or systematic trading. Developed in Python and Rust, integrated with AWS and Grafana."
+  #     - "Executed an empirical model to trade Fed Chair word mentions on Polymarket. Researching systematic volatility strategies in digital asset options markets."
+  #   technologies:
+  #     - "Python"
+  #     - "Rust"
+  #     - "AWS"
+  #     - "Grafana"
+  #     - "Trading Infrastructure"
+  #   image: "/assets/images/experiences/trading-project.jpg"
+  #   featured: true
+    
+  - title: "Kaggle Machine Learning"
+    organization: "Competition"
+    location: "Remote"
+    period: "MAR 2025 - Present"
+    type: "projects"
+    category: "Machine Learning"
+    highlights:
+      # - "Competed in \"DRW – Crypto Market Prediction\". Performed feature engineering and evaluated both Linear and Tree-Based models. Achieved correlation score of 0.050 using LGBMRegressor."
+    technologies:
+      - "Python"
+      - "LGBMRegressor"
+      - "Feature Engineering"
+      - "Machine Learning"
+    image: "/assets/images/experiences/kaggle-project.jpg"
+    featured: false
+    
+  - title: "Supply Chain Classifier using Large Language Models (LLM)"
+    organization: "Final Year Project with Xeptagon"
+    location: "Singapore"
+    period: "AUG 2024 - DEC 2024"
+    type: "projects"
+    category: "LLM, NLP"
+    highlights:
+      # - "Collaborated with Xeptagon for the Final Year Project to build an automated supply chain aggregator using LLMs, specifically for automotive components. Worked in a team of 6 and led the research on LLM evaluation."
+      # - "Optimized vector embeddings and prompt engineering to enhance information extraction. Designed an evaluation framework using statistical NLP methods (e.g., Jaro-Winkler, Cosine TF-IDF, Jaccard), achieving 60% accuracy against ground truth."
+    technologies:
+      - "Large Language Models"
+      - "NLP"
+      - "Vector Embeddings"
+      - "Prompt Engineering"
+      - "Statistical NLP"
+    image: "/assets/images/experiences/llm-project.jpg"
+    featured: true
+    
+  - title: "Market-Cap Weighted RSI Strategy"
+    organization: "Academic Project"
+    location: "Singapore"
+    period: "AUG 2024 – DEC 2024"
+    type: "projects"
+    category: "Backtesting, Portfolio Optimization"
+    highlights:
+      # - "Engineered an event-driven backtester and portfolio manager for systematic equity strategies."
+      # - "Designed a market-cap weighted RSI mean-reversion strategy for technology stocks using the market-cap weighted RSI of QQQ. Optimized portfolio selection using grid search with PyPortfolioOpt."
+    technologies:
+      - "Python"
+      - "PyPortfolioOpt"
+      - "Backtesting"
+      - "Portfolio Optimization"
+      - "Systematic Trading"
+    image: "/assets/images/experiences/rsi-project.jpg"
+    featured: false
+
+# Awards and Skills
+awards:
+  - title: "ETHWaterloo2023"
+    amount: "$3000 USD"
+    period: "2023"
+    
+  - title: "NUS Venture Initiation Programme"
+    amount: "up to $10,000SGD"
+    period: "2024"
+
+skills:
+  programming:
+    - name: "Python"
+      level: "Proficient"
+      details: "Polars, scikit-learn"
+    - name: "Java"
+      level: "Proficient"
+    - name: "Rust"
+      level: "Proficient"
+    - name: "SQL"
+      level: "Proficient"
+    - name: "Git"
+      level: "Proficient"
+    - name: "R"
+      level: "Proficient"
+      
+  languages:
+    - name: "English"
+      level: "Professional"
+    - name: "Mandarin"
+      level: "Professional"
+    - name: "Spanish"
+      level: "Basic"
+      
+  interests:
+    - "Endurance Sports (Ironman Triathlon, Ultra-Marathons)"
+    - "Hiking (Canadian Rockies, Dolomites)"
+    - "Volleyball"
+    - "Ultimate Frisbee"
+
+# Additional metadata for filtering and sorting
+categories:
+  education:
+    - "Bachelor's Degree"
+    - "Master's Degree"
+    - "Online Course"
+    - "Certification"
+  professional:
+    - "Full-time"
+    - "Part-time"
+    - "Internship"
+    - "Freelance"
+    - "Contract"
+  projects:
+    - "Quantitative Trading"
+    - "Machine Learning"
+    - "LLM, NLP"
+    - "Backtesting, Portfolio Optimization"
+    - "Data Science"
+    - "Web Development"
+    - "Data Visualization"
+
+# Display configuration
+display:
+  items_per_page: 6
+  default_filter: "all"
+  default_sort: "date_desc"
+  show_featured_first: true
+  animate_on_load: true

@@ -1,0 +1,146 @@
+# Books organized by reading status and categories
+
+# Currently Reading
+currently_reading:
+  - title: "System Design Interview – An insider's guide"
+    author: "Alex Xu"
+    category: "System Design"
+    progress: 65
+    cover_url: ""
+    review: "Comprehensive guide to system design interviews with real-world examples. Great for understanding scalable architecture patterns."
+    started_date: "2024-12-01"
+    isbn: "9780996049122"
+
+  - title: "Atomic Habits"
+    author: "James Clear"
+    category: "Personal Development"
+    progress: 45
+    cover_url: ""
+    review: "Practical strategies for building good habits and breaking bad ones. The 1% improvement concept is particularly compelling."
+    started_date: "2024-11-20"
+    isbn: "9780735211292"
+
+# Technical Books - Programming & Computer Science
+technical_books:
+  - title: "Clean Code: A Handbook of Agile Software Craftsmanship"
+    author: "Robert C. Martin"
+    category: "Programming"
+    rating: 5
+    cover_url: ""
+    review: "An essential read for any developer. Martin provides practical advice on writing maintainable, readable code. The principles and practices outlined have significantly improved my coding style and approach to software development."
+    date_read: "2024-12-01"
+    isbn: "9780132350884"
+
+  - title: "The Pragmatic Programmer"
+    author: "David Thomas, Andrew Hunt"
+    category: "Programming"
+    rating: 5
+    cover_url: ""
+    review: "A timeless classic that every programmer should read. Filled with practical tips and wisdom that applies regardless of technology stack. The authors present complex concepts in an accessible way."
+    date_read: "2024-11-15"
+    isbn: "9780201616224"
+
+  - title: "Introduction to Algorithms"
+    author: "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein"
+    category: "Computer Science"
+    rating: 4
+    cover_url: ""
+    review: "The definitive textbook on algorithms. Comprehensive coverage of fundamental algorithms and data structures. While dense, it's an invaluable reference for understanding algorithmic thinking."
+    date_read: "2024-10-20"
+    isbn: "9780262033848"
+
+  - title: "Design Patterns: Elements of Reusable Object-Oriented Software"
+    author: "Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides"
+    category: "Software Design"
+    rating: 4
+    cover_url: ""
+    review: "The Gang of Four book is a fundamental resource for understanding design patterns. While some patterns may feel dated, the core concepts remain relevant for modern software architecture."
+    date_read: "2024-09-30"
+    isbn: "9780201633610"
+
+  - title: "JavaScript: The Good Parts"
+    author: "Douglas Crockford"
+    category: "Programming"
+    rating: 4
+    cover_url: ""
+    review: "A concise guide to JavaScript's most useful features. Crockford effectively separates the wheat from the chaff, helping developers avoid common pitfalls and write better JavaScript code."
+    date_read: "2024-08-15"
+    isbn: "9780596517748"
+
+  - title: "You Don't Know JS"
+    author: "Kyle Simpson"
+    category: "Programming"
+    rating: 5
+    cover_url: ""
+    review: "An in-depth exploration of JavaScript's quirks and features. Simpson goes beyond surface-level understanding to explain the 'why' behind JavaScript's behavior. Essential for serious JS developers."
+    date_read: "2024-07-10"
+    isbn: "9781491924464"
+
+# Personal Development & Business
+personal_development:
+  - title: "Deep Work"
+    author: "Cal Newport"
+    category: "Productivity"
+    rating: 5
+    cover_url: ""
+    review: "Revolutionary approach to focused work in a distracted world. Newport's strategies for cultivating deep work have transformed how I approach complex projects and learning."
+    date_read: "2024-10-15"
+    isbn: "9781455586691"
+
+  - title: "The Lean Startup"
+    author: "Eric Ries"
+    category: "Business"
+    rating: 4
+    cover_url: ""
+    review: "Essential reading for anyone interested in entrepreneurship or product development. The build-measure-learn cycle is applicable beyond startups to any innovative endeavor."
+    date_read: "2024-09-05"
+    isbn: "9780307887894"
+
+  - title: "Thinking, Fast and Slow"
+    author: "Daniel Kahneman"
+    category: "Psychology"
+    rating: 5
+    cover_url: ""
+    review: "Fascinating exploration of how our minds work. Kahneman's insights into cognitive biases have made me more aware of decision-making processes in both personal and professional contexts."
+    date_read: "2024-08-20"
+    isbn: "9780374533557"
+
+# Non-Fiction & General Interest
+general_interest:
+  - title: "Sapiens: A Brief History of Humankind"
+    author: "Yuval Noah Harari"
+    category: "History"
+    rating: 5
+    cover_url: ""
+    review: "Mind-expanding perspective on human history and civilization. Harari's ability to connect historical patterns to modern challenges is remarkable."
+    date_read: "2024-07-30"
+    isbn: "9780062316097"
+
+  - title: "The Code Breaker"
+    author: "Walter Isaacson"
+    category: "Biography"
+    rating: 4
+    cover_url: ""
+    review: "Compelling story of Jennifer Doudna and CRISPR gene editing. Great blend of science, biography, and ethical considerations of revolutionary technology."
+    date_read: "2024-06-15"
+    isbn: "9781982115852"
+
+# Want to Read / Wishlist
+want_to_read:
+  - title: "Staff Engineer: Leadership beyond the management track"
+    author: "Will Larson"
+    category: "Career Development"
+    cover_url: ""
+    reason: "Looking to understand the technical leadership path and how to grow beyond individual contributor roles."
+
+  - title: "Designing Data-Intensive Applications"
+    author: "Martin Kleppmann"
+    category: "System Design"
+    cover_url: ""
+    reason: "Highly recommended for understanding modern data systems and distributed computing challenges."
+
+  - title: "The Psychology of Money"
+    author: "Morgan Housel"
+    category: "Finance"
+    cover_url: ""
+    reason: "Interested in understanding the behavioral aspects of financial decision-making."

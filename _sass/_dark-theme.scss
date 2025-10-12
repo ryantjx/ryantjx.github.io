@@ -1,0 +1,143 @@
+// Dark theme styles
+[data-theme="dark"] {
+  // Dark theme color variables
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  
+  --border-color: #334155;
+  --border-light: #475569;
+  
+  // Shadows for dark theme
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+}
+
+// Auto dark theme based on system preference
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
+    
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    
+    --border-color: #334155;
+    --border-light: #475569;
+    
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+  }
+}
+
+// Override auto dark theme if user has manually selected light theme
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  
+  --border-color: #e2e8f0;
+  --border-light: #f1f5f9;
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+// Dark theme specific adjustments
+[data-theme="dark"] {
+  .site-header {
+    background-color: rgba(15, 23, 42, 0.95);
+  }
+  
+  .hero-section {
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  }
+  
+  .post-card, .project-card {
+    &:hover {
+      box-shadow: var(--shadow-lg);
+    }
+  }
+  
+  code {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+  }
+  
+  pre {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+  }
+  
+  blockquote {
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+  }
+  
+  // Form elements in dark mode
+  input, textarea, select {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+    
+    &:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    }
+  }
+  
+  // Table styles in dark mode
+  table {
+    th {
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+    }
+    
+    td {
+      color: var(--text-secondary);
+    }
+    
+    th, td {
+      border-bottom-color: var(--border-color);
+    }
+  }
+}
+
+// Theme toggle button states
+.theme-toggle {
+  i {
+    transition: transform var(--transition-fast);
+  }
+}
+
+[data-theme="dark"] .theme-toggle {
+  #theme-icon:before {
+    content: "\f185"; // Sun icon
+  }
+}
+
+[data-theme="light"] .theme-toggle {
+  #theme-icon:before {
+    content: "\f186"; // Moon icon
+  }
+}
+
+// Smooth transition when switching themes
+* {
+  transition: background-color var(--transition-fast), 
+              border-color var(--transition-fast), 
+              color var(--transition-fast);
+}
