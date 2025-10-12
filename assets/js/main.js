@@ -245,7 +245,9 @@
   // GitHub Statistics
   async function fetchGitHubStats() {
     try {
-      const username = 'ryantjx'; // GitHub username
+      // Get GitHub username from data attribute on <body>
+      const username = document.body.dataset.githubUsername;
+      if (!username) throw new Error('GitHub username not configured. Please set data-github-username attribute on <body>.');
       
       // Fetch user data
       const userResponse = await fetch(`https://api.github.com/users/${username}`);
