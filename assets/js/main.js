@@ -62,18 +62,83 @@
   // Initialize on page load
   document.addEventListener('DOMContentLoaded', initTheme);
   
-  // Mobile navigation toggle
+  // Mobile navigation toggle - JavaScript-based approach
   const navTrigger = document.getElementById('nav-trigger');
   const menuIcon = document.querySelector('.menu-icon');
   const trigger = document.querySelector('.trigger');
+  let isMenuOpen = false;
   
-  if (navTrigger && menuIcon) {
+  console.log('Mobile Navigation Debug:');
+  console.log('navTrigger:', !!navTrigger);
+  console.log('menuIcon:', !!menuIcon);
+  console.log('trigger:', !!trigger);
+  
+  if (menuIcon && trigger) {
+    // Toggle menu function
+    function toggleMenu() {
+      isMenuOpen = !isMenuOpen;
+      console.log('Toggling menu. New state:', isMenuOpen);
+      
+      if (isMenuOpen) {
+        trigger.classList.add('menu-open');
+        menuIcon.classList.add('menu-open');
+        if (navTrigger) navTrigger.checked = true;
+      } else {
+        trigger.classList.remove('menu-open');
+        menuIcon.classList.remove('menu-open');
+        if (navTrigger) navTrigger.checked = false;
+      }
+      
+      // Update ARIA attributes
+      menuIcon.setAttribute('aria-expanded', isMenuOpen.toString());
+    }
+    
+    // Add click event to menu icon
+    menuIcon.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('Menu icon clicked!');
+      toggleMenu();
+    });
+    
+    // Handle keyboard navigation for menu icon
+    menuIcon.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        console.log('Keyboard trigger activated');
+        toggleMenu();
+      }
+    });
+    
+    // Also listen to checkbox changes (fallback)
+    if (navTrigger) {
+      navTrigger.addEventListener('change', function() {
+        console.log('Checkbox changed to:', navTrigger.checked);
+        isMenuOpen = navTrigger.checked;
+        
+        if (isMenuOpen) {
+          trigger.classList.add('menu-open');
+          menuIcon.classList.add('menu-open');
+        } else {
+          trigger.classList.remove('menu-open');
+          menuIcon.classList.remove('menu-open');
+        }
+        
+        menuIcon.setAttribute('aria-expanded', isMenuOpen.toString());
+      });
+    }
+    
     // Close mobile menu when clicking outside
     document.addEventListener('click', function(e) {
-      if (navTrigger.checked && 
+      if (isMenuOpen && 
           !menuIcon.contains(e.target) && 
           !trigger.contains(e.target)) {
-        navTrigger.checked = false;
+        console.log('Clicking outside, closing menu');
+        isMenuOpen = false;
+        trigger.classList.remove('menu-open');
+        menuIcon.classList.remove('menu-open');
+        if (navTrigger) navTrigger.checked = false;
+        menuIcon.setAttribute('aria-expanded', 'false');
       }
     });
     
@@ -81,9 +146,30 @@
     const navLinks = document.querySelectorAll('.trigger .page-link');
     navLinks.forEach(function(link) {
       link.addEventListener('click', function() {
-        navTrigger.checked = false;
+        console.log('Nav link clicked, closing menu');
+        isMenuOpen = false;
+        trigger.classList.remove('menu-open');
+        menuIcon.classList.remove('menu-open');
+        if (navTrigger) navTrigger.checked = false;
+        menuIcon.setAttribute('aria-expanded', 'false');
       });
     });
+    
+    // Handle escape key to close menu
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && isMenuOpen) {
+        console.log('Escape key pressed, closing menu');
+        isMenuOpen = false;
+        trigger.classList.remove('menu-open');
+        menuIcon.classList.remove('menu-open');
+        if (navTrigger) navTrigger.checked = false;
+        menuIcon.setAttribute('aria-expanded', 'false');
+        menuIcon.focus();
+      }
+    });
+    
+    // Initialize accessibility attributes
+    menuIcon.setAttribute('aria-expanded', 'false');
   }
   
   // Smooth scrolling for anchor links

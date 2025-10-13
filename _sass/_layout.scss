@@ -66,6 +66,8 @@
 
 // Navigation styles
 .site-nav {
+  position: relative;
+  
   .nav-trigger {
     display: none;
   }
@@ -74,24 +76,46 @@
     display: none;
     cursor: pointer;
     padding: var(--spacing-sm);
+    border-radius: var(--border-radius-md);
+    transition: all var(--transition-fast);
+    outline: none;
+    background: none;
+    border: none;
     
-    span,
-    span:before,
-    span:after {
+    // Improve touch target size
+    min-width: 44px;
+    min-height: 44px;
+    
+    // Add hover/focus states
+    &:hover,
+    &:focus {
+      background-color: var(--bg-secondary);
+    }
+    
+    &:focus-visible {
+      box-shadow: 0 0 0 2px var(--primary-color);
+    }
+    
+    span {
       display: block;
       width: 24px;
       height: 2px;
       background-color: var(--text-primary);
-      transition: var(--transition-fast);
-    }
-    
-    span {
+      transition: all var(--transition-fast);
+      border-radius: 1px;
       position: relative;
       
       &:before,
       &:after {
         content: '';
+        display: block;
+        width: 24px;
+        height: 2px;
+        background-color: var(--text-primary);
+        transition: all var(--transition-fast);
+        border-radius: 1px;
         position: absolute;
+        left: 0;
       }
       
       &:before { top: -8px; }
@@ -110,11 +134,20 @@
     font-weight: 500;
     font-size: var(--font-size-base);
     transition: color var(--transition-fast);
+    text-decoration: none;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
     
     &:hover,
+    &:focus,
     &.current {
       color: var(--primary-color);
       text-decoration: none;
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 2px;
     }
   }
   
@@ -126,59 +159,186 @@
     padding: var(--spacing-sm);
     border-radius: var(--border-radius-md);
     transition: all var(--transition-fast);
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
-    &:hover {
+    &:hover,
+    &:focus {
       color: var(--primary-color);
       background-color: var(--bg-secondary);
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 2px;
     }
   }
 }
 
-// Mobile navigation
-@media (max-width: 767px) {
+// Mobile navigation - Force display and ensure it works
+@media screen and (max-width: 767px) {
   .site-nav {
+    position: relative;
+    
+    // Force hamburger menu to show on mobile
     .menu-icon {
-      display: block;
+      display: flex !important;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 44px;
+      height: 44px;
+      position: relative;
+      z-index: 1000;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 8px;
+      border-radius: 6px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      
+      // Add visual feedback
+      &:hover {
+        background-color: rgba(37, 99, 235, 0.1);
+      }
+      
+      &:active {
+        background-color: rgba(37, 99, 235, 0.2);
+      }
     }
     
+    // Force menu to be hidden by default on mobile
     .trigger {
+      display: flex !important;
       position: absolute;
-      top: 100%;
+      top: calc(100% + 10px);
       right: 0;
-      background-color: var(--bg-primary);
-      border: 1px solid var(--border-color);
-      border-radius: var(--border-radius-lg);
-      box-shadow: var(--shadow-lg);
-      padding: var(--spacing-md);
-      margin-top: var(--spacing-sm);
-      margin-right: var(--spacing-md);
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      padding: 16px;
+      min-width: 200px;
       flex-direction: column;
-      align-items: flex-start;
-      gap: var(--spacing-md);
-      min-width: 180px;
+      gap: 8px;
+      z-index: 999;
+      
+      // Hidden by default
       opacity: 0;
       visibility: hidden;
       transform: translateY(-10px);
-      transition: all var(--transition-fast);
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
-    .nav-trigger:checked ~ .trigger {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-    
-    .nav-trigger:checked ~ .menu-icon span {
-      background-color: transparent;
+    // Make links full width on mobile
+    .page-link {
+      display: block !important;
+      padding: 12px 16px;
+      border-radius: 6px;
+      width: 100%;
+      text-align: left;
+      min-height: 44px;
+      line-height: 1.3;
+      color: #475569;
+      text-decoration: none;
       
-      &:before {
-        transform: rotate(45deg);
-        top: 0;
+      &:hover,
+      &:focus {
+        background-color: #f8fafc;
+        color: #2563eb;
       }
       
-      &:after {
-        transform: rotate(-45deg);
-        top: 0;
+      &.current {
+        background-color: rgba(37, 99, 235, 0.1);
+        color: #2563eb;
+      }
+    }
+    
+    .theme-toggle {
+      display: flex !important;
+      margin-top: 8px;
+      padding: 12px 16px;
+      border-top: 1px solid #e2e8f0;
+      width: 100%;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 8px;
+      text-align: left;
+      background: none;
+      border-radius: 6px;
+      color: #475569;
+      cursor: pointer;
+      
+      &:hover {
+        background-color: #f8fafc;
+        color: #2563eb;
+      }
+      
+      &::after {
+        content: 'Toggle theme';
+        font-size: 14px;
+      }
+    }
+    
+    // Menu states - controlled by JavaScript
+    .trigger {
+      &.menu-open {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translateY(0) !important;
+        pointer-events: auto !important;
+        display: flex !important;
+      }
+    }
+    
+    // Hamburger animation - controlled by JavaScript
+    .menu-icon {
+      &.menu-open {
+        span {
+          background-color: transparent !important;
+          
+          &:before {
+            transform: rotate(45deg) !important;
+            top: 0 !important;
+          }
+          
+          &:after {
+            transform: rotate(-45deg) !important;
+            top: 0 !important;
+          }
+        }
+      }
+    }
+    
+    // Keep CSS fallback for checkbox method
+    .nav-trigger:checked ~ .trigger {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateY(0) !important;
+      pointer-events: auto !important;
+      display: flex !important;
+    }
+    
+    // Animate hamburger to X when checked
+    .nav-trigger:checked ~ .menu-icon {
+      span {
+        background-color: transparent !important;
+        
+        &:before {
+          transform: rotate(45deg) !important;
+          top: 0 !important;
+        }
+        
+        &:after {
+          transform: rotate(-45deg) !important;
+          top: 0 !important;
+        }
       }
     }
   }

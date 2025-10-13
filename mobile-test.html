@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Navigation Test</title>
+    <style>
+        .test-nav {
+            background: #f0f0f0;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .test-menu-icon {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            background: #007bff;
+            border-radius: 4px;
+        }
+        
+        .test-menu-icon span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+        
+        .test-nav-trigger {
+            display: none;
+        }
+        
+        .test-trigger {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .test-trigger a {
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            color: #333;
+            background: white;
+            border-radius: 4px;
+        }
+        
+        @media (max-width: 767px) {
+            .test-menu-icon {
+                display: flex !important;
+            }
+            
+            .test-trigger {
+                position: absolute;
+                top: 100%;
+                right: 1rem;
+                background: white;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                padding: 1rem;
+                flex-direction: column;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10px);
+                transition: all 0.3s;
+            }
+            
+            .test-nav-trigger:checked ~ .test-trigger {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="test-nav">
+        <div>Test Logo</div>
+        <nav>
+            <input type="checkbox" id="test-nav-trigger" class="test-nav-trigger">
+            <label for="test-nav-trigger" class="test-menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <div class="test-trigger">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </div>
+    
+    <div style="padding: 2rem;">
+        <h1>Mobile Navigation Test</h1>
+        <p>Resize your browser to mobile width (&lt;767px) to test the navigation.</p>
+        <p>The hamburger menu should appear on the top right and be clickable.</p>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const trigger = document.getElementById('test-nav-trigger');
+            const icon = document.querySelector('.test-menu-icon');
+            
+            console.log('Test Navigation Elements:');
+            console.log('Trigger found:', !!trigger);
+            console.log('Icon found:', !!icon);
+            
+            if (icon) {
+                icon.addEventListener('click', function() {
+                    console.log('Menu icon clicked!');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

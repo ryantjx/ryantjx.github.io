@@ -1251,6 +1251,9 @@
   background-color: #000000;
   border: 1px solid #30363d;
   overflow: hidden;
+  /* Allow flex items to shrink below their content width to avoid overflow
+     when placed inside a constrained flex/grid layout. */
+  min-width: 0;
   
   &:hover {
     transform: translateY(-2px);
@@ -1264,6 +1267,10 @@
     flex-shrink: 0;
     margin: 0;
     display: block;
+    object-fit: contain;
+    /* Prevent very tall images from overflowing the viewport; scale by viewport
+       height so images shrink proportionally on small screens. */
+    max-height: clamp(120px, 40vh, 480px);
     
     &:hover {
       transform: scale(1.01);
@@ -1280,7 +1287,9 @@
   // Contribution calendar card - expanded to fill space
   &.calendar-card {
     flex: 1 1 0;
-    min-width: 480px;
+    /* Allow calendar card to shrink on small screens instead of forcing
+       horizontal scrolling. */
+    min-width: 0;
     display: flex;
     flex-direction: column;
     
@@ -1293,6 +1302,9 @@
       height: 100%;
       flex: 1;
       padding: var(--spacing-sm);
+      /* make sure the inner container can shrink and doesn't force overflow */
+      min-width: 0;
+      overflow: hidden;
       
       .calendar-title {
         font-size: var(--font-size-sm);
@@ -1314,6 +1326,9 @@
         aspect-ratio: auto;
         flex: 1;
         min-height: 0;
+        /* Constrain calendar/chart height so it scales with viewport and
+           prevents the page from growing beyond the screen */
+        max-height: clamp(120px, 42vh, 560px);
       }
       
       .calendar-legend {
@@ -1347,8 +1362,25 @@
       width: 100%;
       max-width: 500px;
       justify-content: flex-start;
+      /* On narrower screens ensure the cards don't force horizontal scroll */
+      min-width: 0;
     }
   }
+}
+
+/* Ensure other stat-card images also scale and don't overflow their card */
+.stat-card,
+.stat-card-inline {
+  /* base min-width to allow flex shrinking */
+  min-width: 0;
+}
+
+.stat-card img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: clamp(120px, 40vh, 520px);
+  display: block;
 }
 
 .stats-header {
@@ -1738,4 +1770,105 @@
 // Text utilities
 .text-center {
   text-align: center;
+}
+
+// Touch and mobile navigation improvements
+@media (max-width: 767px) {
+  // Improve touch targets
+  .site-nav {
+    .menu-icon {
+      // Ensure proper touch target size (44px minimum)
+      min-width: 44px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      // Improve visual feedback
+      -webkit-tap-highlight-color: rgba(37, 99, 235, 0.1);
+      touch-action: manipulation;
+      user-select: none;
+      
+      // Add active state for touch
+      &:active {
+        background-color: var(--primary-color);
+        color: white;
+        
+        span,
+        span:before,
+        span:after {
+          background-color: white;
+        }
+      }
+    }
+    
+    .page-link,
+    .theme-toggle {
+      // Ensure proper touch target size
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      
+      // Improve touch interaction
+      -webkit-tap-highlight-color: rgba(37, 99, 235, 0.1);
+      touch-action: manipulation;
+      user-select: none;
+      
+      // Add active state for touch
+      &:active {
+        background-color: var(--primary-color);
+        color: white;
+        transform: scale(0.98);
+      }
+    }
+    
+    .theme-toggle {
+      justify-content: flex-start;
+      gap: var(--spacing-sm);
+      
+      &::after {
+        content: 'Toggle theme';
+        font-size: var(--font-size-sm);
+        font-family: inherit;
+      }
+    }
+  }
+  
+  // Prevent zoom on input focus (if any forms are added later)
+  input[type="text"],
+  input[type="email"],
+  input[type="search"],
+  textarea {
+    font-size: 16px; // Prevents zoom on iOS
+  }
+}
+
+// Accessibility improvements
+@media (prefers-reduced-motion: reduce) {
+  .site-nav .trigger,
+  .site-nav .menu-icon span,
+  .site-nav .menu-icon span:before,
+  .site-nav .menu-icon span:after {
+    transition: none;
+  }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  .site-nav {
+    .menu-icon {
+      border: 2px solid currentColor;
+    }
+    
+    .trigger {
+      border: 2px solid currentColor;
+    }
+    
+    .page-link:focus,
+    .theme-toggle:focus {
+      outline: 3px solid currentColor;
+      outline-offset: 2px;
+    }
+  }
 }
