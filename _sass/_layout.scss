@@ -176,6 +176,72 @@
       outline-offset: 2px;
     }
   }
+
+  // Theme switch (pill with knob) used in mobile menu
+  .theme-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .switch {
+    width: 44px;
+    height: 24px;
+    position: relative;
+    display: inline-block;
+  }
+
+  .switch-track {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: var(--border-light);
+    transition: background-color var(--transition-fast);
+  }
+
+  .switch-thumb {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--bg-primary);
+    top: 3px;
+    left: 3px;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-fast), background var(--transition-fast);
+  }
+
+  .switch.on .switch-track {
+    background: var(--primary-color);
+  }
+
+  .switch.on .switch-thumb {
+    transform: translateX(20px);
+    background: #fff;
+  }
+
+  .visually-hidden {
+    position: absolute !important;
+    height: 1px; width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+  }
+
+  // Persistent toggle positioning: place outside hamburger on mobile
+  .persistent-theme-toggle {
+    display: none; /* hidden on desktop by default */
+    position: absolute;
+    right: 56px; /* sit left of the hamburger */
+    top: 14px;
+    z-index: 1100;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+  }
 }
 
 // Mobile navigation - Force display and ensure it works
@@ -339,6 +405,24 @@
           transform: rotate(-45deg) !important;
           top: 0 !important;
         }
+      }
+    }
+    // Show persistent toggle on small screens (placed near hamburger)
+    .persistent-theme-toggle {
+      display: inline-flex !important;
+      right: 56px;
+      top: 10px;
+      color: #475569;
+    }
+
+    // Make the switch thumb and track better visible in menu
+    .theme-switch {
+      margin-top: 0;
+      .switch-track {
+        background: #e6e9ef;
+      }
+      .switch.on .switch-track {
+        background: #2563eb;
       }
     }
   }

@@ -38,16 +38,25 @@
             </a>
           {% endfor %}
           
-          <!-- Theme toggle button -->
-          <button class="theme-toggle" 
-                  id="theme-toggle" 
-                  aria-label="Toggle dark mode"
-                  role="menuitem"
-                  tabindex="0">
-            <i class="fas fa-moon" id="theme-icon"></i>
-          </button>
+          <!-- Theme toggle inside mobile menu (switch style) -->
+          <div class="theme-toggle theme-switch" role="menuitem" >
+            <div class="switch" id="theme-switch">
+              <span class="switch-track" aria-hidden="true"></span>
+              <span class="switch-thumb" aria-hidden="true"></span>
+            </div>
+            <!-- <span class="switch-label visually-hidden">Toggle theme</span> -->
+          </div>
         </div>
       </nav>
     </div>
   </div>
 </header>
+
+<!-- Persistent theme toggle (icon for desktop, pill for mobile positioning)
+<button class="theme-toggle persistent-theme-toggle" 
+        id="theme-toggle" 
+        aria-label="Toggle dark mode"
+        role="button"
+        tabindex="0">
+  <i class="fas fa-moon" id="theme-icon" aria-hidden="true"></i>
+</button> -->

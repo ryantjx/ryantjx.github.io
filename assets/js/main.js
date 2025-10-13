@@ -5,6 +5,8 @@
   // Theme management
   const themeToggle = document.getElementById('theme-toggle');
   const themeIcon = document.getElementById('theme-icon');
+  const themeSwitch = document.getElementById('theme-switch');
+  const themeSwitchContainer = document.querySelector('.theme-switch');
   const html = document.documentElement;
   
   // Get stored theme or default to system preference
@@ -30,7 +32,24 @@
   // Update theme icon
   function updateThemeIcon(theme) {
     if (themeIcon) {
+      // Update FontAwesome icon classes
       themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+      // Update aria-pressed
+      themeIcon.setAttribute('aria-hidden', 'true');
+    }
+
+    // Update switch visual state if present
+    if (themeSwitch) {
+      if (theme === 'dark') {
+        themeSwitch.classList.add('on');
+        themeSwitch.setAttribute('data-state', 'dark');
+      } else {
+        themeSwitch.classList.remove('on');
+        themeSwitch.setAttribute('data-state', 'light');
+      }
+    }
+    if (themeSwitchContainer) {
+      themeSwitchContainer.setAttribute('aria-checked', theme === 'dark' ? 'true' : 'false');
     }
   }
   
@@ -56,7 +75,26 @@
   
   // Event listeners
   if (themeToggle) {
-    themeToggle.addEventListener('click', toggleTheme);
+    themeToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      toggleTheme();
+    });
+  }
+
+  // Mobile switch click
+  if (themeSwitchContainer) {
+    themeSwitchContainer.addEventListener('click', function(e) {
+      e.preventDefault();
+      toggleTheme();
+    });
+
+    // Allow keyboard activation
+    themeSwitchContainer.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleTheme();
+      }
+    });
   }
   
   // Initialize on page load
