@@ -6,7 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <!-- SEO Tags -->
-  {% seo %}
+  <!-- Use a simple, site-wide title for the browser tab. The jekyll-seo-tag was removed to avoid appending the site description to the title.
+    We still keep explicit Open Graph / Twitter meta tags below for social previews. -->
+  <title>{{ site.title }}</title>
+  <meta name="description" content="{{ site.description }}">
   
   <!-- Stylesheets -->
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
@@ -20,7 +23,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
+  <link rel="icon" type="image/png" href="{{ '/assets/images/smiley.png' | relative_url }}">
+  <link rel="alternate icon" type="image/x-icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
   
   <!-- RSS Feed -->
   <link type="application/atom+xml" rel="alternate" href="{{ '/feed.xml' | relative_url }}" title="{{ site.title }}">

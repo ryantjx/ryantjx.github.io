@@ -1,0 +1,25 @@
+{% for project in site.data.cv.projects %}
+<div class="timeline-item">
+  <div class="timeline-content-project">
+    {% if project.url != "" %}
+    <a class="project-row" href="{{ project.url }}">
+    {% else %}
+    <a class="project-row">
+    {% endif %}
+      <div class="project-image">
+        <img src="{{ project.image }}" alt="{{ project.title }}">
+      </div>
+      <div class="project-content">
+        <div class="title-with-date">
+          <h3>{{ project.title }}</h3>
+          <span class="date-right">{{ project.start_date }} - {{ project.end_date }}</span>
+        </div>
+        <p class="project-subtitle"><i>{{ project.subtitle }}</i></p>
+        <p class="role-description">
+          {{ project.description }}
+        </p>
+      </div>
+    </a>
+  </div>
+</div>
+{% endfor %}

@@ -8,273 +8,35 @@ permalink: /cv/
 <div class="cv-container">
   <div class="cv-header">
     <div class="cv-info">
-      <h1>Ryan Tan Jun Xiong</h1>
-      <p>For my latest CV, feel free to reach out to me on <a href="https://linkedin.com/in/{{ site.linkedin_username }}" >Linkedin</a>.</p>
-      <!-- <div class="cv-contact">
-        <span><i class="fas fa-globe"></i> <a href="https://ryantjx.github.io/">ryantjx.github.io</a></span>
-        <span><i class="fab fa-github"></i> <a href="https://github.com/{{ site.github_username }}">{{ site.github_username }}</a></span>
-        <span><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/{{ site.linkedin_username }}">{{ site.linkedin_username }}</a></span>
-        <span><i class="fas fa-flag"></i> Nationality: Singaporean. Open to relocation.</span>
-      </div> -->
+      <h1>{{ site.data.cv.personal.name }}</h1>
+      <p>{{ site.data.cv.personal.linkedin_note }} <a href="https://linkedin.com/in/{{ site.linkedin_username }}">Linkedin</a>.</p>
     </div>
-    <!-- <div class="cv-actions">
-      <a href="#" class="btn btn-primary" onclick="window.print()">
-        <i class="fas fa-download"></i> Download PDF
-      </a>
-    </div> -->
   </div>
 
   <section class="cv-section">
     <h2><i class="fas fa-graduation-cap"></i> Education</h2>
     <div class="cv-timeline">
-      <div class="timeline-item">
-        <div class="timeline-content-education">
-          <div class="university-logo">
-            <img src="/assets/images/cv/Warwick.png" alt="University of Warwick">
-          </div>
-          <div class="content-details">
-            <div class="education-details">
-              <div class="title-with-date">
-                <h3>University of Warwick</h3>
-                <span class="date-right">Sep 2026</span>
-              </div>
-              <div class="content-area">
-                <div class="company-location">
-                  <div class="course-info">
-                    <h4>MSc Statistics</h4>
-                    <p class="grade-info"><strong>Grade:</strong> Not yet available</p>
-                  </div>
-                  <h4 class="location-right">Coventry, United Kingdom</h4>
-                </div>
-                <p class="role-description">
-                  Bayesian Statistics, Machine Learning, Stochastic Control
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-content-education">
-          <div class="university-logo">
-            <img src="/assets/images/cv/NUS.png" alt="National University of Singapore">
-          </div>
-          <div class="content-details">
-            <div class="education-details">
-              <div class="title-with-date">
-                <h3>National University of Singapore (NUS)</h3>
-                <span class="date-right">May 2025</span>
-              </div>
-              <div class="content-area">
-                <div class="company-location">
-                  <div class="course-info">
-                    <h4>BSc in Business Analytics with Honours</h4>
-                    <p class="grade-info"><strong>Grade:</strong> Upper Second Class (Distinction)</p>
-                  </div>
-                  <h4 class="location-right">Singapore</h4>
-                </div>
-                <p class="role-description">
-                  Data Structures and Algorithms, Object-Oriented Programming, Machine Learning, Computational Statistics
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {% include cv-education.html %}
     </div>
   </section>
 
   <section class="cv-section">
     <h2><i class="fas fa-briefcase"></i> Experience</h2>
     <div class="cv-timeline">
-      <div class="timeline-item">
-        <div class="timeline-content-experience">
-          <div class="company-logo">
-            <img src="/assets/images/cv/BastionTrading.png" alt="Bastion Trading">
-          </div>
-          <div class="content-details">
-            <div class="experience-details">
-              <div class="title-with-date">
-                <div style="display:flex;flex-direction:column;">
-                  <h3>Bastion Trading</h3>
-                  <p>Proprietary Trading Firm</p>
-                </div>
-                <span class="date-right">Jul 2025 – Sep 2025</span>
-              </div>
-              <div class="content-area">
-                <div class="company-location">
-                  <div class="course-info">
-                    <h4>Quant Intern</h4>
-                  </div>
-                  <h4 class="location-right">Singapore</h4>
-                </div>
-                <ul class="role-description">
-                  <!-- <li>Developed quantitative trading strategies and implemented them in production.</li>
-                  <li>Generated 40bps profit during internship period.</li>
-                  <li>Ranked as top-performing intern in trading P&L.</li> -->
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-content-experience">
-          <div class="company-logo">
-            <img src="/assets/images/cv/Maven11.jpeg" alt="Maven11">
-          </div>
-          <div class="content-details">
-            <div class="experience-details">
-              <div class="title-with-date">
-                <div style="display:flex;flex-direction:column;">
-                  <h3>Maven11</h3>
-                  <p>Digital Asset Hedge Fund</p>
-                </div>
-                <span class="date-right">Sep 2023 – Jun 2025</span>
-              </div>
-              <div class="content-area">
-                <div class="company-location">
-                  <div class="course-info">
-                    <h4>Data Analyst Intern</h4>
-                  </div>
-                  <h4 class="location-right">Amsterdam, The Netherlands</h4>
-                </div>
-                <ul class="role-description">
-                  <!-- <li>Led systematic strategy research for digital asset trading signals.</li>
-                  <li>Designed and deployed AWS infrastructure for data pipelines and model training.</li> -->
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-content-experience">
-          <div class="company-logo">
-            <img src="/assets/images/cv/CanadaStablecorp.jpeg" alt="Stablecorp">
-          </div>
-          <div class="content-details">
-            <div class="experience-details">
-              <div class="title-with-date">
-                <div style="display:flex;flex-direction:column;">
-                  <h3>Stablecorp</h3>
-                  <p>Stablecoin Payment Infrastructure</p>
-                </div>
-                <span class="date-right">Aug 2022 – Jul 2023</span>
-              </div>
-              <div class="content-area">
-                <div class="company-location">
-                  <div class="course-info">
-                    <h4>Data Analyst Intern</h4>
-                  </div>
-                  <h4 class="location-right">Toronto, Canada</h4>
-                </div>
-                <ul class="role-description">
-                  <!-- <li>Built risk monitoring tools to track smart contract exposure and anomalies.</li>
-                  <li>Modelled probability of exploit of decentralized finance (DeFi) protocols. Estimated at ~3%.</li> -->
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {% include cv-experience.html %}
     </div>
   </section>
 
   <section class="cv-section">
     <h2><i class="fas fa-code"></i> Projects</h2>
     <div class="cv-timeline">
-      <div class="timeline-item">
-        <div class="timeline-content-project">
-          <a class="project-row" href="https://github.com/ryantjx">
-            <div class="project-image">
-              <img src="/assets/images/experiences/Dolomites_marmolada_2024.jpeg" alt="Kaggle Machine Learning">
-            </div>
-            <div class="project-content">
-              <div class="title-with-date">
-                <h3>Kaggle</h3>
-                <span class="date-right">2025</span>
-              </div>
-              <p class="project-subtitle">Machine Learning</p>
-              <ul class="role-description">
-                <li>Competed in DRW Crypto Market Prediction achieving 0.050 correlation score using LGBMRegressor.</li>
-              </ul>
-            </div>
-          </a>
-        </div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-content-project">
-          <a class="project-row" href="https://github.com/ryantjx">
-            <div class="project-image">
-              <img src="/assets/images/experiences/Dolomites_marmolada_2024.jpeg" alt="Supply Chain Classifier">
-            </div>
-            <div class="project-content">
-              <div class="title-with-date">
-                <h3>Automated Supply Chain Aggregator</h3>
-                <span class="date-right">2024–2025</span>
-              </div>
-              <p class="project-subtitle">Large Language Model (LLM), NLP</p>
-              <ul class="role-description">
-                <!-- <li>Led LLM evaluation research for automated supply chain aggregator, achieving 60% accuracy against ground truth.</li> -->
-              </ul>
-            </div>
-          </a>
-        </div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-content-project">
-          <a class="project-row">
-            <div class="project-image">
-              <img src="/assets/images/experiences/Dolomites_marmolada_2024.jpeg" alt="Market-Cap Weighted RSI Strategy">
-            </div>
-            <div class="project-content">
-              <div class="title-with-date">
-                <h3>Market-Cap Weighted RSI Strategy</h3>
-                <span class="date-right">2023–2024</span>
-              </div>
-              <p class="project-subtitle">Backtesting, PyPortfolioOpt</p>
-              <ul class="role-description">
-                <li>Engineered event-driven backtester for market-cap weighted RSI mean-reversion strategy on technology stocks.</li>
-              </ul>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-content-project">
-          <a class="project-row" href="https://github.com/ryantjx/stochastic-modelling-of-digital-asset-perpetual-futures">
-            <div class="project-image">
-              <img src="/assets/images/experiences/Dolomites_marmolada_2024.jpeg" alt="Stochastic Modeling of Digital Asset Perpetual Futures">
-            </div>
-            <div class="project-content">
-              <div class="title-with-date">
-                <h3>Stochastic Modeling of Digital Asset Perpetual Futures</h3>
-                <span class="date-right">2024–2025</span>
-              </div>
-              <p class="project-subtitle">Monte Carlo</p>
-              <ul class="role-description">
-                <li>Implemented stochastic Monte Carlo simulations to model funding-rate dynamics for digital-asset perpetual futures, quantifying expected returns and funding-fee impact on P&L.</li>
-                <li>Backtests and simulations showed an extrapolated +46% return (95th/5th percentiles ≈ +200% / -20%), mean fees ≈ $676 ± $162, and a ~0.85% liquidation risk.</li>
-              </ul>
-            </div>
-          </a>
-        </div>
-      </div>
+      {% include cv-projects.html %}
     </div>
   </section>
 
   <section class="cv-section">
     <h2><i class="fas fa-trophy"></i> Extra-Curriculars</h2>
-    <ul class="role-description">
-      <li>ETHWaterloo2023 — $3,000 USD (Partner prize)</li>
-      <li>NUS Venture Initiation Programme — up to $10,000 SGD (selected)</li>
-    </ul>
+    {% include cv-extracurriculars.html %}
   </section>
   
 </div> 
