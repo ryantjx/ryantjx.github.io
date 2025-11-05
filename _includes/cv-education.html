@@ -1,0 +1,29 @@
+{% for edu in site.data.cv.education %}
+<div class="timeline-item">
+  <div class="timeline-content-education">
+    <div class="university-logo">
+      <img src="{{ edu.logo }}" alt="{{ edu.institution }}">
+    </div>
+    <div class="content-details">
+      <div class="education-details">
+        <div class="title-with-date">
+          <h3>{{ edu.institution }}</h3>
+          <span class="date-right">{{ edu.end_date }}</span>
+        </div>
+        <div class="content-area">
+          <div class="company-location">
+            <div class="course-info">
+              <h4>{{ edu.degree }}</h4>
+              <p class="grade-info"><strong>Grade:</strong> {{ edu.grade }}</p>
+            </div>
+            <h4 class="location-right">{{ edu.location }}</h4>
+          </div>
+          <p class="role-description">
+            {{ edu.courses | join: ', ' }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}

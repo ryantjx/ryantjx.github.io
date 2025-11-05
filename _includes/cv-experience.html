@@ -1,0 +1,29 @@
+{% for exp in site.data.cv.experience %}
+<div class="timeline-item">
+  <div class="timeline-content-experience">
+    <div class="company-logo">
+      <img src="{{ exp.logo }}" alt="{{ exp.company }}">
+    </div>
+    <div class="content-details">
+      <div class="experience-details">
+        <div class="title-with-date">
+          <h3>{{ exp.company }}</h3>
+          <span class="date-right">{{ exp.start_date }} – {{ exp.end_date }}</span>
+        </div>
+        <div class="content-area">
+          <div class="company-location">
+            <div class="course-info">
+              <h4>{{ exp.position }}</h4>
+              <p class="grade-info">{{ exp.company_type }}</p>
+            </div>
+            <h4 class="location-right">{{ exp.location }}</h4>
+          </div>
+          <p class="role-description">
+            {{ exp.description }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}

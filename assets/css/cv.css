@@ -2,7 +2,7 @@
 .cv-container {
   /* CSS variables to control gaps between image and content for different card types.
      Change these variables to tune spacing site-wide without touching multiple rules. */
-  --project-gap: 8px;       /* gap for .timeline-content-project */
+  --project-gap: 10px;       /* gap for .timeline-content-project */
   --project-row-gap: 10px;  /* gap between image and content inside .project-row */
   --education-gap: 10px;    /* gap for .timeline-content-education */
   --experience-gap: 10px;   /* gap for .timeline-content-experience */
@@ -41,9 +41,9 @@
 
 .timeline-item {
   display: flex;
-  gap: 6px; /* small gap between logo and content */
-  margin-bottom: 0; /* remove extra spacing; cards provide the gap */
-  padding: 6px 10px; /* padding around edges so cards don't touch the edges */
+  gap: 0; /* no gap between logo and content - card provides internal spacing */
+  margin-bottom: 8px; /* compact spacing between cards */
+  padding: 0; /* no padding - card provides all spacing */
   margin-left: 0;
   /* Center items vertically so logos have equal space above/below */
   align-items: center;
@@ -82,7 +82,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start; /* align to top so the position sits closer to the title block */
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
 .location-right {
@@ -121,7 +121,7 @@
 .role-description {
   margin-top: 0;
   margin-bottom: 0;
-  line-height: 1.3;
+  line-height: 1.4;
 }
 
 .experience-details h4 {
@@ -133,7 +133,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start; /* align children to top so dates line up with the h3 */
-  margin-bottom: 0px; /* reduce space between title and content */
+  margin-bottom: 4px; /* compact space between title and content */
 }
 
 .title-with-date h3 {
@@ -166,7 +166,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 0px; /* small, consistent gap between title and description lines */
+  gap: 2px; /* small, consistent gap between title and description lines */
 }
 
 /* Remove timeline styling and align with headers */
@@ -204,7 +204,7 @@
   /* allow the card to size within the padded timeline-item */
   flex: 1 1 auto;
   box-sizing: border-box;
-  padding: 8px; /* increased inner padding for content */
+  padding: 10px; /* compact inner padding for content */
   background: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.07);
@@ -248,16 +248,16 @@
 .timeline-content-project {
   flex: 1 1 auto;
   box-sizing: border-box;
-  /* smaller outer padding like experience cards so content sits flush */
-  padding: 8px;
-  background: rgba(255, 255, 255, 0.04);
+  /* match education/experience padding for consistency */
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.10), 0 2px 4px rgba(0,0,0,0.06);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.08);
   /* Make project cards a flexible horizontal card with image (30%) and content (70%) */
   display: flex;
-  align-items: flex-start; /* align children to top like experience cards */
-  gap: var(--project-gap, 8px);
+  align-items: center; /* center align like education/experience cards */
+  gap: var(--project-gap, 10px);
   margin-bottom: 0;
   transition: box-shadow 0.25s ease, transform 0.15s ease;
 }
@@ -278,9 +278,9 @@
   display: flex;
   width: 100%;
   align-items: center; /* center image and content vertically */
-  gap: var(--project-row-gap, 12px); /* space between image and content */
-  /* set a sensible minimum so small cards keep a consistent visual weight */
-  min-height: 150px; /* consistent with requested minimum */
+  gap: 0; /* no gap - parent provides spacing */
+  /* Remove min-height to match education/experience cards */
+  min-height: auto;
   /* avoid inner border-radius/overflow so the outer timeline-content-project
      supplies the white rounded card look and spacing (matches experience cards) */
   border-radius: 0;
@@ -290,8 +290,8 @@
 
 
 .timeline-content-project .project-image {
-  width: 200px;
-  height: 150px;
+  width: 125px;
+  height: 125px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -299,33 +299,32 @@
   border-radius: 8px;
   background-color: rgba(255, 255, 255, 0.9);
   padding: 0; /* remove inner padding so child <img> can fill the container */
-  box-sizing: border-box; /* corrected from border-rectangle */
+  box-sizing: border-box;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08);
   transition: box-shadow 0.3s ease;
+  margin-right: 10px;
 }
 
 .timeline-content-project .project-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* crop to fill the image area */
-  object-position: center center; /* center the focused crop similar to logos */
+  object-fit: contain; /* match education/experience logo style */
+  object-position: center center;
   display: block;
+  border-radius: 4px;
 }
 
 .timeline-content-project .project-content {
-  flex: 1 1 70%;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* flush content to top */
-  gap: 6px;
-  padding: 0 8px; /* reduce vertical padding so content sits nearer the top */
+  justify-content: center; /* center vertically like education/experience */
+  gap: 0;
+  padding: 0;
+  min-width: 0;
 }
 
-/* Make project cards visually distinct from experience cards */
-.timeline-content-project {
-  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-  border: 1px solid rgba(100,140,255,0.08);
-}
+/* Removed extra project styling - standardized with education/experience */
 
 /* Dark mode: increase card elevation and add subtle rim to be visible on dark backgrounds */
 @media (prefers-color-scheme: dark) {
@@ -437,7 +436,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   min-width: 0;
   gap: 0;
 }
@@ -450,14 +449,15 @@
   /* center the inner details so text lines up with the logo */
   justify-content: center;
   min-width: 0;
-  gap: 0px;
+  gap: 0;
 }
 
 .timeline-content-education .content-details h3,
 .timeline-content-experience .content-details h3 {
   /* more specific selector to override global h3 sizing */
   color: var(--text-primary, #ffffff);
-  margin-bottom: 4px;
+  margin-bottom: 0;
+  margin-top: 0;
   /* Title (School / Company) — highest priority */
   font-size: 1.125rem !important;
   font-weight: 700;
@@ -467,7 +467,8 @@
 /* Projects: make heading match other section headings */
 .timeline-content-project .project-content h3 {
   color: var(--text-primary, #ffffff);
-  margin-bottom: 4px;
+  margin-bottom: 0;
+  margin-top: 0;
   font-size: 1.125rem; /* same as experience/company headings */
   font-weight: 700;
   line-height: 1.2;
@@ -476,8 +477,8 @@
 .timeline-content-education .content-details h4,
 .timeline-content-experience .content-details h4 {
   color: var(--text-primary, #ffffff);
-  margin-bottom: 2px;
-  margin-top: 2px;
+  margin-bottom: 0;
+  margin-top: 0;
   /* Position / course — secondary priority */
   font-size: 1rem;
   font-weight: 600;
@@ -486,7 +487,7 @@
 .timeline-content-education .content-details .role-description,
 .timeline-content-experience .content-details .role-description {
   color: var(--text-secondary, #d1d5db);
-  margin-top: 4px;
+  margin-top: 0;
   margin-bottom: 0;
   line-height: 1.4;
   /* Description — tertiary priority */
@@ -496,7 +497,7 @@
 /* Projects: use same role-description sizing/format as other sections */
 .timeline-content-project .project-content .role-description {
   color: var(--text-secondary, #d1d5db);
-  margin-top: 4px;
+  margin-top: 0;
   margin-bottom: 0;
   line-height: 1.4;
   font-size: 0.95rem;
@@ -504,7 +505,7 @@
 
 /* Subtitle under project title (similar to small paragraph under company name) */
 .timeline-content-project .project-content .project-subtitle {
-  margin: 0;
+  margin: 0 0 4px 0;
   color: var(--text-secondary, #9ca3af);
   font-weight: 400;
   font-size: 0.95rem;
@@ -512,23 +513,23 @@
 
 /* Base role-description: paragraphs should not have list padding */
 .role-description {
-  margin: 2px 0 0 0; /* minimal gap from the element above */
+  margin: 0;
   padding-left: 0; /* no indent for paragraph descriptions */
   color: var(--text-secondary, #d1d5db);
-  line-height: 1.35;
+  line-height: 1.4;
   font-size: 0.95rem;
 }
 
 /* List variant: when role-description is a UL apply bullets and indent */
 ul.role-description {
-  margin: 6px 0 0 0; /* small gap from the element above */
+  margin: 0;
   padding-left: 1.25rem; /* make bullets indented but inside the card */
   list-style: disc;
   color: var(--text-secondary, #d1d5db);
 }
 
 .role-description li {
-  margin: 0 0 2px 0; /* very small spacing between bullets */
-  line-height: 1.35;
+  margin: 0;
+  line-height: 1.4;
   font-size: 0.95rem;
 }
