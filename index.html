@@ -79,4 +79,36 @@ layout: default
   </div>
 </section>
 
+<section class="home-section trading-section">
+  <h2>Market Trading Status</h2>
+  <div class="section-content">
+    <div class="trading-table-container">
+      <table class="trading-table">
+        <thead>
+          <tr>
+            <th>Instrument</th>
+            <th>Name</th>
+            <th>Sector</th>
+            <th>Current/Last</th>
+            <th>Status</th>
+            <th>Opens/Closes In</th>
+          </tr>
+        </thead>
+        <tbody id="trading-table-body">
+          <!-- Table rows will be populated by JavaScript -->
+        </tbody>
+      </table>
+      <div class="trading-footer">
+        <div class="trading-legend">
+          <span class="status-indicator trading">🟢 Open</span>
+          <span class="status-indicator closed">🔴 Closed</span>
+        </div>
+        <div class="trading-last-updated">
+          Last Updated: <span id="last-updated-time">Never</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 

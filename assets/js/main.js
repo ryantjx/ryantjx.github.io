@@ -720,3 +720,830 @@ function initializeAboutPage() {
 
 // Export for global access
 window.initializeAboutPage = initializeAboutPage;
+
+// Trading Instruments Table Functionality
+(function() {
+  'use strict';
+  
+  // Define trading instruments with their trading hours (in ET)
+  const instruments = [
+    {
+      symbol: 'SPX',
+      name: 'S&P 500 Index',
+      exchange: 'CBOE',
+      regularOpen: '09:30',
+      regularClose: '16:00',
+      preMarketOpen: '04:00',
+      afterHoursClose: '20:00',
+      timezone: 'America/New_York',
+      tradingDays: [1, 2, 3, 4, 5] // Monday-Friday
+    },
+    {
+      symbol: 'VIX',
+      name: 'CBOE Volatility Index',
+      exchange: 'CBOE',
+      regularOpen: '09:30',
+      regularClose: '16:15',
+      preMarketOpen: '03:00',
+      afterHoursClose: '16:15',
+      timezone: 'America/New_York',
+      tradingDays: [1, 2, 3, 4, 5]
+    },
+    {
+      symbol: 'QQQ',
+      name: 'Invesco QQQ Trust',
+      exchange: 'NASDAQ',
+      regularOpen: '09:30',
+      regularClose: '16:00',
+      preMarketOpen: '04:00',
+      afterHoursClose: '20:00',
+      timezone: 'America/New_York',
+      tradingDays: [1, 2, 3, 4, 5]
+    },
+    {
+      symbol: 'NDX',
+      name: 'NASDAQ-100 Index',
+      exchange: 'NASDAQ',
+      regularOpen: '09:30',
+      regularClose: '16:00',
+      preMarketOpen: '04:00',
+      afterHoursClose: '20:00',
+      timezone: 'America/New_York',
+      tradingDays: [1, 2, 3, 4, 5]
+    },
+    {
+      symbol: 'RUSS',
+      name: 'Russell 2000 Index',
+      exchange: 'Russell',
+      regularOpen: '09:30',
+      regularClose: '16:00',
+      preMarketOpen: '04:00',
+      afterHoursClose: '20:00',
+      timezone: 'America/New_York',
+      tradingDays: [1, 2, 3, 4, 5]
+    },
+    {
+      symbol: 'ES',
+      name: 'E-mini S&P 500 Futures',
+      exchange: 'CME',
+      regularOpen: '18:00', // Sunday 6:00 PM ET
+      regularClose: '17:00', // Friday 5:00 PM ET
+      preMarketOpen: null,
+      afterHoursClose: null,
+      timezone: 'America/New_York',
+      tradingDays: [0, 1, 2, 3, 4, 5], // Sunday 6pm - Friday 5pm
+      nearly24h: true,
+      dailyBreak: { start: '17:00', end: '18:00' } // Daily maintenance 5-6pm ET
+    },
+    {
+      symbol: 'NQ',
+      name: 'E-mini NASDAQ Futures',
+      exchange: 'CME',
+      regularOpen: '18:00', // Sunday 6:00 PM ET
+      regularClose: '17:00', // Friday 5:00 PM ET
+      preMarketOpen: null,
+      afterHoursClose: null,
+      timezone: 'America/New_York',
+      tradingDays: [0, 1, 2, 3, 4, 5], // Sunday 6pm - Friday 5pm
+      nearly24h: true,
+      dailyBreak: { start: '17:00', end: '18:00' } // Daily maintenance 5-6pm ET
+    },
+    {
+      symbol: 'BTC',
+      name: 'Bitcoin',
+      exchange: 'Crypto',
+      regularOpen: null,
+      regularClose: null,
+      preMarketOpen: null,
+      afterHoursClose: null,
+      timezone: 'UTC',
+      tradingDays: [0, 1, 2, 3, 4, 5, 6], // 24/7
+      is24h: true
+    },
+    {
+      symbol: 'ETH',
+      name: 'Ethereum',
+      exchange: 'Crypto',
+      regularOpen: null,
+      regularClose: null,
+      preMarketOpen: null,
+      afterHoursClose: null,
+      timezone: 'UTC',
+      tradingDays: [0, 1, 2, 3, 4, 5, 6], // 24/7
+      is24h: true
+    },
+    {
+      symbol: 'DAX',
+      name: 'DAX Index',
+      exchange: 'XETRA',
+      regularOpen: '09:00',
+      regularClose: '17:30',
+      preMarketOpen: '08:00',
+      afterHoursClose: '22:00',
+      timezone: 'Europe/Berlin',
+      tradingDays: [1, 2, 3, 4, 5]
+    },
+    {
+      symbol: 'STOXX',
+      name: 'Euro Stoxx 50',
+      exchange: 'Eurex',
+      regularOpen: '09:00',
+      regularClose: '17:30',
+      preMarketOpen: '08:00',
+      afterHoursClose: '22:00',
+      timezone: 'Europe/Berlin',
+      tradingDays: [1, 2, 3, 4, 5]
+    },
+    {
+      symbol: 'HSI',
+      name: 'Hang Seng Index',
+      exchange: 'HKEX',
+      regularOpen: '09:30',
+      regularClose: '16:00',
+      preMarketOpen: '09:15',
+      afterHoursClose: '16:00',
+      timezone: 'Asia/Hong_Kong',
+      tradingDays: [1, 2, 3, 4, 5],
+      lunchBreak: { start: '12:00', end: '13:00' }
+    },
+    {
+      symbol: 'NKY',
+      name: 'Nikkei 225',
+      exchange: 'TSE',
+      regularOpen: '09:00',
+      regularClose: '15:00',
+      preMarketOpen: '08:00',
+      afterHoursClose: '15:00',
+      timezone: 'Asia/Tokyo',
+      tradingDays: [1, 2, 3, 4, 5],
+      lunchBreak: { start: '11:30', end: '12:30' }
+    },
+    {
+      symbol: 'DXY',
+      name: 'US Dollar Index',
+      exchange: 'ICE',
+      regularOpen: '18:00', // Sunday evening
+      regularClose: '17:00', // Friday afternoon
+      preMarketOpen: null,
+      afterHoursClose: null,
+      timezone: 'America/New_York',
+      tradingDays: [0, 1, 2, 3, 4, 5],
+      nearly24h: true
+    }
+  ];
+  
+  function parseTime(timeStr, timezone) {
+    const now = new Date();
+    const [hours, minutes] = timeStr.split(':').map(Number);
+    
+    // Create date in the instrument's timezone
+    const dateStr = now.toLocaleString('en-US', { timeZone: timezone });
+    const date = new Date(dateStr);
+    date.setHours(hours, minutes, 0, 0);
+    
+    return date;
+  }
+  
+  function getTradingStatus(instrument) {
+    const now = new Date();
+    const nowInTZ = new Date(now.toLocaleString('en-US', { timeZone: instrument.timezone }));
+    const currentDay = nowInTZ.getDay();
+    const currentTime = nowInTZ.getHours() * 60 + nowInTZ.getMinutes();
+    
+    // Check if it's a trading day
+    if (!instrument.tradingDays.includes(currentDay)) {
+      return {
+        status: 'closed',
+        isOpen: false,
+        countdown: getNextTradingDayCountdown(instrument, nowInTZ)
+      };
+    }
+    
+    // 24/7 markets
+    if (instrument.is24h) {
+      return {
+        status: 'open',
+        isOpen: true,
+        countdown: null
+      };
+    }
+    
+    // Nearly 24h markets (futures)
+    if (instrument.nearly24h) {
+      const closeTime = parseTimeInMinutes(instrument.regularClose);
+      const openTime = parseTimeInMinutes(instrument.regularOpen);
+      
+      // For futures: close Friday 5pm, reopen Sunday 6pm ET
+      // Friday after 5pm - CLOSED until Sunday 6pm
+      if (currentDay === 5 && currentTime >= closeTime) {
+        return {
+          status: 'closed',
+          isOpen: false,
+          countdown: getCountdownToTime(instrument, 'regularOpen', nowInTZ, 2) // Sunday
+        };
+      }
+      
+      // Saturday all day - CLOSED
+      if (currentDay === 6) {
+        return {
+          status: 'closed',
+          isOpen: false,
+          countdown: getCountdownToTime(instrument, 'regularOpen', nowInTZ, 1) // Sunday
+        };
+      }
+      
+      // Sunday before 6pm - CLOSED
+      if (currentDay === 0 && currentTime < openTime) {
+        return {
+          status: 'closed',
+          isOpen: false,
+          countdown: getCountdownToTime(instrument, 'regularOpen', nowInTZ, 0)
+        };
+      }
+      
+      // Check for daily break (5pm-6pm ET)
+      if (instrument.dailyBreak) {
+        const breakStart = parseTimeInMinutes(instrument.dailyBreak.start);
+        const breakEnd = parseTimeInMinutes(instrument.dailyBreak.end);
+        
+        if (currentTime >= breakStart && currentTime < breakEnd) {
+          return {
+            status: 'closed',
+            isOpen: false,
+            countdown: getCountdownToTime(instrument, 'dailyBreak.end', nowInTZ)
+          };
+        }
+      }
+      
+      return {
+        status: 'open',
+        isOpen: true,
+        countdown: getCountdownToTime(instrument, 'regularClose', nowInTZ, 5) // Friday close
+      };
+    }
+    
+    // Regular markets with defined hours
+    const regularOpenTime = parseTimeInMinutes(instrument.regularOpen);
+    const regularCloseTime = parseTimeInMinutes(instrument.regularClose);
+    
+    // Check for lunch break (Asian markets)
+    if (instrument.lunchBreak) {
+      const lunchStart = parseTimeInMinutes(instrument.lunchBreak.start);
+      const lunchEnd = parseTimeInMinutes(instrument.lunchBreak.end);
+      
+      if (currentTime >= lunchStart && currentTime < lunchEnd) {
+        return {
+          status: 'closed',
+          isOpen: false,
+          countdown: getCountdownToTime(instrument, 'lunchBreak.end', nowInTZ)
+        };
+      }
+    }
+    
+    if (currentTime >= regularOpenTime && currentTime < regularCloseTime) {
+      return {
+        status: 'open',
+        isOpen: true,
+        countdown: getCountdownToTime(instrument, 'regularClose', nowInTZ)
+      };
+    }
+    
+    // Market closed - show countdown to next open
+    if (currentTime < regularOpenTime) {
+      return {
+        status: 'closed',
+        isOpen: false,
+        countdown: getCountdownToTime(instrument, 'regularOpen', nowInTZ)
+      };
+    }
+    
+    // After hours closed - show countdown to next day
+    return {
+      status: 'closed',
+      isOpen: false,
+      countdown: getCountdownToTime(instrument, 'regularOpen', nowInTZ, 1)
+    };
+  }
+  
+  function parseTimeInMinutes(timeStr) {
+    const [hours, minutes] = timeStr.split(':').map(Number);
+    return hours * 60 + minutes;
+  }
+  
+  function getTimezoneAbbr(timezone) {
+    const abbrs = {
+      'America/New_York': 'ET',
+      'America/Chicago': 'CT',
+      'Europe/Berlin': 'CET',
+      'Asia/Hong_Kong': 'HKT',
+      'Asia/Tokyo': 'JST',
+      'UTC': 'UTC'
+    };
+    return abbrs[timezone] || '';
+  }
+  
+  function getNextTradingDayCountdown(instrument, currentDate) {
+    let nextDay = new Date(currentDate);
+    nextDay.setDate(nextDay.getDate() + 1);
+    
+    while (!instrument.tradingDays.includes(nextDay.getDay())) {
+      nextDay.setDate(nextDay.getDate() + 1);
+    }
+    
+    const time = instrument.regularOpen;
+    const [hours, minutes] = time.split(':').map(Number);
+    nextDay.setHours(hours, minutes, 0, 0);
+    
+    return formatCountdown(nextDay - new Date());
+  }
+  
+  function getCountdownToTime(instrument, timeField, currentDate, daysOffset = 0) {
+    const targetDate = new Date(currentDate);
+    
+    // Handle special case for futures closing on Friday
+    if (daysOffset === 5 && instrument.nearly24h) {
+      // Find next Friday
+      let daysUntilFriday = (5 - currentDate.getDay() + 7) % 7;
+      if (daysUntilFriday === 0 && currentDate.getHours() * 60 + currentDate.getMinutes() >= parseTimeInMinutes(instrument.regularClose)) {
+        daysUntilFriday = 7;
+      }
+      targetDate.setDate(targetDate.getDate() + daysUntilFriday);
+    } else if (daysOffset === 0 && instrument.nearly24h && currentDate.getDay() === 6) {
+      // If Saturday, next open is Sunday
+      targetDate.setDate(targetDate.getDate() + 1);
+    } else {
+      targetDate.setDate(targetDate.getDate() + daysOffset);
+    }
+    
+    let timeStr;
+    if (timeField === 'lunchBreak.end') {
+      timeStr = instrument.lunchBreak.end;
+    } else if (timeField === 'dailyBreak.end') {
+      timeStr = instrument.dailyBreak.end;
+    } else {
+      timeStr = instrument[timeField];
+    }
+    
+    const [hours, minutes] = timeStr.split(':').map(Number);
+    targetDate.setHours(hours, minutes, 0, 0);
+    
+    const now = new Date();
+    const localNow = new Date(now.toLocaleString('en-US', { timeZone: instrument.timezone }));
+    const diff = targetDate - localNow;
+    
+    if (diff <= 0) return null;
+    
+    return formatCountdown(diff);
+  }
+  
+  function formatCountdown(milliseconds) {
+    if (milliseconds <= 0) return null;
+    
+    const totalSeconds = Math.floor(milliseconds / 1000);
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+    
+    if (hours > 24) {
+      const days = Math.floor(hours / 24);
+      const remainingHours = hours % 24;
+      return `${days}d ${remainingHours}h ${minutes}m`;
+    }
+    
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  }
+  
+  // Yahoo Finance symbol mapping and futures contract management
+  const yahooSymbolMap = {
+    'SPX': '^GSPC',      // S&P 500 Index
+    'VIX': '^VIX',       // CBOE Volatility Index
+    'QQQ': 'QQQ',        // Invesco QQQ Trust
+    'NDX': '^NDX',       // NASDAQ-100 Index
+    'RUSS': '^RUT',      // Russell 2000 Index
+    'ES': 'ES=F',        // E-mini S&P 500 Futures (will be replaced with current contract)
+    'NQ': 'NQ=F',        // E-mini NASDAQ-100 Futures
+    'DAX': '^GDAXI',     // DAX Performance Index
+    'STOXX': '^STOXX50E', // EURO STOXX 50
+    'HSI': '^HSI',       // Hang Seng Index
+    'NKY': '^N225',      // Nikkei 225
+    'DXY': 'DX-Y.NYB'    // US Dollar Index
+  };
+  
+  // CoinGecko API mapping for cryptocurrencies
+  const coinGeckoMap = {
+    'BTC': 'bitcoin',
+    'ETH': 'ethereum'
+  };
+  
+  // Currency symbols for each instrument
+  const currencySymbols = {
+    'SPX': 'USD ',
+    'VIX': '',      // VIX is a percentage index
+    'QQQ': 'USD ',
+    'NDX': 'USD ',
+    'RUSS': 'USD ',
+    'ES': 'USD ',
+    'NQ': 'USD ',
+    'BTC': 'USD ',
+    'ETH': 'USD ',
+    'DAX': '€',
+    'STOXX': '€',
+    'HSI': 'HK$',
+    'NKY': '¥',
+    'DXY': ''
+  };
+  
+  // Country flags for each instrument
+  const countryFlags = {
+    'SPX': '🇺🇸',
+    'VIX': '🇺🇸',
+    'QQQ': '🇺🇸',
+    'NDX': '🇺🇸',
+    'RUSS': '🇺🇸',
+    'ES': '🇺🇸',
+    'NQ': '🇺🇸',
+    'BTC': '🌐',
+    'ETH': '🌐',
+    'DAX': '🇩🇪',
+    'STOXX': '🇪🇺',
+    'HSI': '🇭🇰',
+    'NKY': '🇯🇵',
+    'DXY': '🇺🇸'
+  };
+  
+  // Sector/Category for each instrument
+  const instrumentSectors = {
+    'SPX': 'Index',
+    'VIX': 'Volatility',
+    'QQQ': 'ETF',
+    'NDX': 'Index',
+    'RUSS': 'Index',
+    'ES': 'Futures',
+    'NQ': 'Futures',
+    'BTC': 'Crypto',
+    'ETH': 'Crypto',
+    'DAX': 'Index',
+    'STOXX': 'Index',
+    'HSI': 'Index',
+    'NKY': 'Index',
+    'DXY': 'Currency'
+  };
+  
+  // Futures contract months (CME codes)
+  const futuresMonths = ['H', 'M', 'U', 'Z']; // Mar, Jun, Sep, Dec
+  const monthCodes = {
+    'H': 2,  // March (month 3 - 1 for 0-indexed)
+    'M': 5,  // June
+    'U': 8,  // September
+    'Z': 11  // December
+  };
+  
+  // Get current front-month futures contract with 1-week rollover
+  function getFuturesContract(baseSymbol, rollDaysBefore = 7) {
+    const now = new Date();
+    const currentMonth = now.getMonth();
+    const currentYear = now.getFullYear();
+    
+    // Find next contract month
+    let nextContractMonthIndex = futuresMonths.findIndex(code => monthCodes[code] >= currentMonth);
+    if (nextContractMonthIndex === -1) {
+      nextContractMonthIndex = 0; // Roll to next year's first contract
+    }
+    
+    const nextMonthCode = futuresMonths[nextContractMonthIndex];
+    const nextContractMonth = monthCodes[nextMonthCode];
+    let contractYear = currentYear;
+    
+    // If we've passed all contracts this year, use next year
+    if (nextContractMonth < currentMonth) {
+      contractYear++;
+    }
+    
+    // Calculate expiry (3rd Friday of contract month)
+    const expiryDate = getThirdFriday(contractYear, nextContractMonth);
+    
+    // Check if we're within rollover window (1 week before expiry)
+    const daysUntilExpiry = Math.floor((expiryDate - now) / (1000 * 60 * 60 * 24));
+    
+    let contractMonthCode, contractYearCode;
+    
+    if (daysUntilExpiry <= rollDaysBefore) {
+      // Roll to next contract
+      const nextIndex = (nextContractMonthIndex + 1) % futuresMonths.length;
+      contractMonthCode = futuresMonths[nextIndex];
+      contractYearCode = (nextIndex === 0 ? contractYear + 1 : contractYear) % 100;
+    } else {
+      contractMonthCode = nextMonthCode;
+      contractYearCode = contractYear % 100;
+    }
+    
+    // Format: ESH25 (E-mini S&P 500 March 2025)
+    return `${baseSymbol}${contractMonthCode}${String(contractYearCode).padStart(2, '0')}`;
+  }
+  
+  // Get third Friday of a month (futures expiry)
+  function getThirdFriday(year, month) {
+    const firstDay = new Date(year, month, 1);
+    const firstFriday = 1 + (5 - firstDay.getDay() + 7) % 7;
+    const thirdFriday = firstDay.getDay() <= 5 ? firstFriday + 14 : firstFriday + 7;
+    return new Date(year, month, thirdFriday);
+  }
+  
+  // Price cache to avoid excessive API calls
+  const priceCache = {
+    data: {},
+    lastFetch: 0,
+    cacheDuration: 60000 // Cache for 1 minute
+  };
+  
+  // Fetch cryptocurrency prices from CoinGecko
+  async function fetchCryptoPrices() {
+    const cryptoIds = Object.values(coinGeckoMap).join(',');
+    const url = `https://api.coingecko.com/api/v3/simple/price?ids=${cryptoIds}&vs_currencies=usd`;
+    
+    try {
+      console.log('Fetching crypto prices from CoinGecko...');
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+      
+      const data = await response.json();
+      const prices = {};
+      
+      // Map CoinGecko data back to our symbols
+      Object.entries(coinGeckoMap).forEach(([key, coinId]) => {
+        if (data[coinId]) {
+          prices[key] = {
+            price: data[coinId].usd,
+            symbol: coinId
+          };
+          console.log(`✓ ${key}: $${data[coinId].usd.toFixed(2)}`);
+        } else {
+          prices[key] = null;
+          console.warn(`${key}: Missing price data`);
+        }
+      });
+      
+      return prices;
+    } catch (error) {
+      console.error('Error fetching CoinGecko data:', error);
+      // Return null for all crypto symbols
+      const prices = {};
+      Object.keys(coinGeckoMap).forEach(key => {
+        prices[key] = null;
+      });
+      return prices;
+    }
+  }
+  
+  // Fetch prices from Yahoo Finance and CoinGecko
+  async function fetchYahooPrices() {
+    const now = Date.now();
+    
+    // Return cached data if still valid
+    if (now - priceCache.lastFetch < priceCache.cacheDuration && Object.keys(priceCache.data).length > 0) {
+      console.log('Using cached price data');
+      return priceCache.data;
+    }
+    
+    console.log('Fetching fresh price data...');
+    const prices = {};
+    
+    try {
+      // Update futures contracts with current front-month
+      const esContract = getFuturesContract('ES');
+      const nqContract = getFuturesContract('NQ');
+      
+      console.log('Current futures contracts:', { ES: esContract, NQ: nqContract });
+      
+      // Create symbols list with updated futures
+      const symbolsToFetch = { ...yahooSymbolMap };
+      symbolsToFetch['ES'] = esContract;
+      symbolsToFetch['NQ'] = nqContract;
+      
+      // Fetch Yahoo Finance prices
+      const yahooPromises = Object.entries(symbolsToFetch).map(async ([key, yahooSymbol]) => {
+        try {
+          const url = `https://query1.finance.yahoo.com/v8/finance/chart/${yahooSymbol}`;
+          console.log(`Fetching ${key} (${yahooSymbol})...`);
+          
+          const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+          
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+          }
+          
+          const data = await response.json();
+          
+          if (data.chart && data.chart.result && data.chart.result[0]) {
+            const result = data.chart.result[0];
+            const meta = result.meta;
+            
+            const currentPrice = meta.regularMarketPrice || meta.previousClose;
+            const previousClose = meta.chartPreviousClose || meta.previousClose;
+            
+            if (currentPrice && previousClose) {
+              prices[key] = {
+                price: currentPrice,
+                symbol: yahooSymbol
+              };
+              console.log(`✓ ${key}: $${currentPrice.toFixed(2)}`);
+            } else {
+              console.warn(`${key}: Missing price data`);
+              prices[key] = null;
+            }
+          } else {
+            console.warn(`${key}: Invalid response structure`);
+            prices[key] = null;
+          }
+        } catch (error) {
+          console.warn(`Failed to fetch ${key} (${yahooSymbol}):`, error.message);
+          prices[key] = null;
+        }
+      });
+      
+      // Fetch crypto prices from CoinGecko
+      const cryptoPromise = fetchCryptoPrices();
+      
+      // Wait for all fetches to complete
+      await Promise.all(yahooPromises);
+      const cryptoPrices = await cryptoPromise;
+      
+      // Merge crypto prices into main prices object
+      Object.assign(prices, cryptoPrices);
+      
+      console.log(`Successfully fetched data for ${Object.keys(prices).length} instruments`);
+      
+      // Update cache
+      priceCache.data = prices;
+      priceCache.lastFetch = now;
+      
+      return prices;
+      
+    } catch (error) {
+      console.error('Error fetching price data:', error);
+      // Return cached data or empty object
+      if (Object.keys(priceCache.data).length > 0) {
+        console.log('Using cached data due to error');
+        return priceCache.data;
+      } else {
+        console.log('No cached data available');
+        return prices;
+      }
+    }
+  }
+  
+  // Get price display with live data
+  function getPriceDisplay(symbol) {
+    const priceData = priceCache.data[symbol];
+    
+    // If null, data fetch failed
+    if (priceData === null) {
+      return '<span style="color: #999;">No data</span>';
+    }
+    
+    // If undefined, still loading
+    if (!priceData) {
+      return '<span style="color: #999;">Loading...</span>';
+    }
+    
+    const currency = currencySymbols[symbol] || '';
+    
+    // Format price based on value
+    const decimals = priceData.price < 10 ? 4 : priceData.price < 1000 ? 2 : 2;
+    const formattedPrice = priceData.price.toLocaleString('en-US', { 
+      minimumFractionDigits: decimals, 
+      maximumFractionDigits: decimals 
+    });
+    
+    return `${currency}${formattedPrice}`;
+  }
+  
+  // Get last updated time
+  function getLastUpdated() {
+    if (priceCache.lastFetch === 0) {
+      return 'Never';
+    }
+    
+    const now = Date.now();
+    const secondsAgo = Math.floor((now - priceCache.lastFetch) / 1000);
+    
+    if (secondsAgo < 60) {
+      return `${secondsAgo}s ago`;
+    } else if (secondsAgo < 3600) {
+      const minutes = Math.floor(secondsAgo / 60);
+      return `${minutes}m ago`;
+    } else {
+      const hours = Math.floor(secondsAgo / 3600);
+      return `${hours}h ago`;
+    }
+  }
+  
+  function getCountdown(instrument, timeField, currentDate, daysOffset = 0) {
+    return getCountdownToTime(instrument, timeField, currentDate, daysOffset);
+  }
+  
+  function getNextTradingDay(instrument, currentDate) {
+    return getNextTradingDayCountdown(instrument, currentDate);
+  }
+  
+  function renderTradingTable() {
+    const tableBody = document.getElementById('trading-table-body');
+    if (!tableBody) {
+      console.warn('Table body element not found');
+      return;
+    }
+    
+    const rows = instruments.map(instrument => {
+      const status = getTradingStatus(instrument);
+      const statusIcon = status.isOpen ? '🟢' : '🔴';
+      const priceDisplay = getPriceDisplay(instrument.symbol);
+      const countdownText = status.countdown || (status.isOpen ? '—' : 'N/A');
+      const countryFlag = countryFlags[instrument.symbol] || '';
+      const sector = instrumentSectors[instrument.symbol] || 'Other';
+      
+      return `
+        <tr class="instrument-row status-${status.status}">
+          <td class="instrument-symbol"><span class="country-flag">${countryFlag}</span> <strong>${instrument.symbol}</strong></td>
+          <td class="instrument-name">${instrument.name}</td>
+          <td class="instrument-sector">${sector}</td>
+          <td class="instrument-price">${priceDisplay}</td>
+          <td class="instrument-status">
+            <span class="status-badge status-${status.status}">
+              ${statusIcon}
+            </span>
+          </td>
+          <td class="instrument-countdown">
+            ${countdownText !== '—' && countdownText !== 'N/A' ? `<span class="countdown-timer">${countdownText}</span>` : countdownText}
+          </td>
+        </tr>
+      `;
+    }).join('');
+    
+    tableBody.innerHTML = rows;
+    
+    // Update the last updated footer
+    const lastUpdatedElement = document.getElementById('last-updated-time');
+    if (lastUpdatedElement) {
+      lastUpdatedElement.textContent = getLastUpdated();
+    }
+  }
+  
+  function initTradingTable() {
+    const tableBody = document.getElementById('trading-table-body');
+    if (!tableBody) {
+      console.log('Trading table body not found - skipping initialization');
+      return;
+    }
+    
+    console.log('Initializing trading table...');
+    
+    // Show loading state
+    tableBody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 2rem;">Loading market data...</td></tr>';
+    
+    // Fetch initial price data
+    fetchYahooPrices()
+      .then(() => {
+        console.log('Initial price data fetched successfully');
+        renderTradingTable();
+      })
+      .catch(error => {
+        console.error('Failed to fetch initial price data:', error);
+        tableBody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 2rem; color: #e74c3c;">Failed to load market data. Please check your internet connection.</td></tr>';
+        // Try to render anyway to show status
+        setTimeout(renderTradingTable, 1000);
+      });
+    
+    // Update prices every minute
+    setInterval(() => {
+      fetchYahooPrices().then(() => {
+        console.log('Price data updated');
+      }).catch(error => {
+        console.warn('Failed to update price data:', error);
+      });
+    }, 60000);
+    
+    // Update countdown every second
+    setInterval(renderTradingTable, 1000);
+  }
+  
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTradingTable);
+  } else {
+    initTradingTable();
+  }
+  
+})();
