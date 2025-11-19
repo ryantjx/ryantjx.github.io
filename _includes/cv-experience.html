@@ -1,28 +1,30 @@
 {% for exp in site.data.cv.experience %}
-<div class="timeline-item">
-  <div class="timeline-content-experience">
-    <div class="company-logo">
+<div class="card" style="margin-bottom: 12px;">
+  <div class="card-header" style="border-bottom: none;">
+    <div class="avatar avatar-square">
       <img src="{{ exp.logo }}" alt="{{ exp.company }}">
     </div>
-    <div class="content-details">
-      <div class="experience-details">
-        <div class="title-with-date">
-          <h3>{{ exp.company }}</h3>
-          <span class="date-right">{{ exp.start_date }} – {{ exp.end_date }}</span>
-        </div>
-        <div class="content-area">
-          <div class="company-location">
-            <div class="course-info">
-              <h4>{{ exp.position }}</h4>
-              <p class="grade-info">{{ exp.company_type }}</p>
-            </div>
-            <h4 class="location-right">{{ exp.location }}</h4>
+    <div class="card-header-text">
+      <div
+        style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 6px; width: 100%;">
+        <div style="flex: 1; min-width: 0;">
+          <h3 class="card-title" style="margin-bottom: 2px;">{{ exp.company }}</h3>
+          <p class="card-description" style="margin-bottom: 6px;">{{ exp.position }}</p>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <span class="badge badge-secondary">{{ exp.company_type }}</span>
           </div>
-          <p class="role-description">
-            {{ exp.description }}
-          </p>
+        </div>
+        <div
+          style="display: flex; flex-direction: column; gap: 6px; align-items: flex-end; flex-shrink: 0; white-space: nowrap;">
+          <span class="badge">{{ exp.start_date }} – {{ exp.end_date }}</span>
+          <span class="badge badge-outline">{{ exp.location }}</span>
         </div>
       </div>
+      {% if exp.description %}
+      <p style="margin: 6px 0 0 0; font-size: 0.9rem; line-height: 1.5; color: var(--text-secondary, #d1d5db);">
+        {{ exp.description }}
+      </p>
+      {% endif %}
     </div>
   </div>
 </div>

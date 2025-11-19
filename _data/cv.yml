@@ -8,6 +8,7 @@ education:
     degree: "MSc Statistics"
     location: "Coventry, United Kingdom"
     end_date: "Sep 2026"
+    research_interest: "Computational statistics integrated with machine learning"
     grade: "Not yet available."
     courses:
       - "Monte Carlo"
@@ -65,6 +66,13 @@ experience:
     description: "Part of Smart Manufacturing and AI group (SMAI)."
 
 projects:
+  - title: "Warwick Quant - Head of Projects"
+    image: "/assets/images/warwick_quant_logo.jpeg"
+    url: "https://github.com/warwickquant/KnowledgeBase"
+    start_date: "Oct 2025"
+    end_date: "Present"
+    description: "Building engineering framework for Warwick Quant and leading Systematic Crypto Options Trading project."
+
   - title: "Kaggle"
     image: "/assets/images/cv/projects/kaggle.png"
     url: "https://github.com/ryantjx"
@@ -106,6 +114,6 @@ projects:
     description: "Utilized NLP techniques to analyze Twitter and Reddit sentiment towards Houston Rockets and identified key factors using Latent Dirichlet Allocation (LDA) to provide recommendations for NBA team Houston Rockets."
 
 extracurriculars:
-  - "ETHWaterloo2023 — $3,000 USD (Partner prize) changing"
-  - "NUS Venture Initiation Programme 2025 — up to $10,000 SGD (selected)"
+  - "ETHWaterloo2023 — $3,000 USD (Partner prize)"
+  - "NUS Venture Initiation Programme 2025 — $10,000 SGD"
   - "NUS Enterprise The Hangar Booster Programme - Jun 2021"

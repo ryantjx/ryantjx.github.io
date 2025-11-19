@@ -1,535 +1,102 @@
-/* CV styles extracted from cv.html */
+/* CV Page Styles - Simplified for shadcn/ui components */
+
 .cv-container {
-  /* CSS variables to control gaps between image and content for different card types.
-     Change these variables to tune spacing site-wide without touching multiple rules. */
-  --project-gap: 10px;       /* gap for .timeline-content-project */
-  --project-row-gap: 10px;  /* gap between image and content inside .project-row */
-  --education-gap: 10px;    /* gap for .timeline-content-education */
-  --experience-gap: 10px;   /* gap for .timeline-content-experience */
-}
-.company-logo img, .university-logo img {
-  /* Make logo images scale to fit their container without cropping. Using
-     object-fit: contain preserves the entire logo while keeping it centered
-     inside the allocated logo box. */
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* scale to fit without cropping */
-  object-position: center center;
-  border-radius: 4px;
-  box-sizing: border-box;
-  background-color: transparent; /* avoid any unexpected background when aspect differs */
-}
-
-.company-logo, .university-logo {
-  width: 125px;
-  height: 125px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 0;
-  padding-left: 0;
-}
-
-.experience-header {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 15px;
-  align-items: flex-start;
-}
-
-.timeline-item {
-  display: flex;
-  gap: 0; /* no gap between logo and content - card provides internal spacing */
-  margin-bottom: 8px; /* compact spacing between cards */
-  padding: 0; /* no padding - card provides all spacing */
-  margin-left: 0;
-  /* Center items vertically so logos have equal space above/below */
-  align-items: center;
-}
-
-.education-details {
-  flex: 1;
-  /* remove fixed height so vertical centering is driven by card/content
-     and logos remain centered regardless of content height */
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* center the text vertically to match logo */
-  min-width: 0; /* Allow shrinking to prevent overflow */
-}
-
-.experience-details {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  /* center the content vertically so it aligns with the logo */
-  justify-content: center;
-  min-width: 0; /* Allow shrinking to prevent overflow */
-}
-
-.education-container, .experience-container {
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  width: 100%;
-  margin-left: 0;
-  padding-left: 0;
-}
-
-.company-location {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start; /* align to top so the position sits closer to the title block */
-  margin-bottom: 4px;
-}
-
-.location-right {
-  font-size: 0.9em;
-  color: var(--text-secondary, #9ca3af);
-  font-weight: 400;
-  margin-left: 12px;
-  flex-shrink: 0;
-}
-
-.location-right h4 {
-  margin: 0;
-  font-size: 1em;
-  color: var(--text-secondary, #9ca3af);
-  font-weight: 400;
-}
-
-.grade-info {
-  font-size: 0.9em;
-  color: var(--text-secondary, #9ca3af);
-  margin-top: 0px;
-  margin-bottom: 0;
-}
-
-.course-info {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.course-info h4 {
-  margin-bottom: 2px;
+  padding-top: 0;
   margin-top: 0;
 }
 
-.role-description {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 1.4;
+/* CV Header */
+.cv-header {
+  padding-top: 2rem !important;
+  padding-bottom: 1rem !important;
+  margin-bottom: 1.5rem !important;
+  border-bottom: 1px solid var(--border-color);
 }
 
-.experience-details h4 {
-  margin-top: 0px;
-  margin-bottom: 0;
+.cv-header-content {
+  text-align: center;
 }
 
-.title-with-date {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start; /* align children to top so dates line up with the h3 */
-  margin-bottom: 4px; /* compact space between title and content */
-}
-
-.title-with-date h3 {
-  margin: 0;
-  flex: 1;
-  min-width: 0; /* Allow text to wrap and prevent overflow */
-  word-wrap: break-word;
-  font-size: 1.125rem; /* ensure a consistent heading size for alignment */
-}
-
-/* Remove default paragraph spacing inside the title block so the
-   company description sits directly above the role/title. */
-.title-with-date p {
-  margin: 0;
+.cv-subtitle {
   color: var(--text-secondary, #9ca3af);
-  font-weight: 400;
-  font-size: 0.95rem;
-}
-
-.date-right {
-  font-size: 1.125rem; /* match the h3 size */
-  color: var(--text-primary, #ffffff); /* match h3 colour */
-  font-weight: 600;
-  margin-left: 12px;
-  align-self: flex-start; /* make sure the date sits at the top of the title block */
-}
-
-.content-area {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 2px; /* small, consistent gap between title and description lines */
-}
-
-/* Remove timeline styling and align with headers */
-.cv-timeline {
-  position: relative;
-  margin-left: 0;
-  padding-left: 0;
-}
-
-.cv-timeline::before,
-.cv-timeline::after,
-.timeline-item::before,
-.timeline-item::after {
-  display: none !important;
-}
-
-.timeline-date {
-  display: none;
-}
-
-/* Ensure section headers and timeline content align */
-.cv-section h2 {
-  margin-left: 0;
-  padding-left: 0;
-}
-
-.cv-section {
-  margin-left: 0;
-  padding-left: 0;
-}
-
-/* Timeline content for education and experience sections */
-.timeline-content-education,
-.timeline-content-experience {
-  /* allow the card to size within the padded timeline-item */
-  flex: 1 1 auto;
-  box-sizing: border-box;
-  padding: 10px; /* compact inner padding for content */
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  /* Increased base shadow for more elevation (requirement) */
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.08);
-  display: flex;
-  gap: var(--education-gap, 10px); /* comfortable internal gap */
-  /* center the logo and the content vertically inside the card */
-  align-items: center;
-  margin-bottom: 0; /* cards sit flush; timeline-item padding provides separation */
-  /* Remove hover transform/hover shadow for Education and Experience per request */
-  transition: box-shadow 0.2s ease;
-  /* ensure the card uses the site's base font and a consistent base size */
-  font-family: var(--font-family-base, Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
   font-size: 1rem;
-  color: var(--text-primary, #ffffff);
+  margin-top: 0.5rem;
 }
 
-.timeline-content-education .university-logo,
-.timeline-content-experience .company-logo {
-  width: 125px;
-  height: 125px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 0; /* remove inner padding so child <img> can fill the container */
-  box-sizing: border-box;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08);
-  transition: box-shadow 0.3s ease;
-}
-
-.timeline-content-education .university-logo:hover,
-.timeline-content-experience .company-logo:hover {
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16), 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Projects: full-width card style with hover and link support. Keep hover shadow as-is. */
-.timeline-content-project {
-  flex: 1 1 auto;
-  box-sizing: border-box;
-  /* match education/experience padding for consistency */
-  padding: 10px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.08);
-  /* Make project cards a flexible horizontal card with image (30%) and content (70%) */
-  display: flex;
-  align-items: center; /* center align like education/experience cards */
-  gap: var(--project-gap, 10px);
-  margin-bottom: 0;
-  transition: box-shadow 0.25s ease, transform 0.15s ease;
-}
-
-.timeline-content-project:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.08);
-  transform: translateY(-2px);
-}
-
-/* When a project card wraps an <a>, ensure the link fills the card and inherits styles */
-.timeline-content-project a {
-  color: inherit;
+.cv-subtitle a {
+  color: var(--primary-color, #4ade80);
   text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
-/* Project card layout: 30% image, 70% content */
-.timeline-content-project a.project-row {
+/* CV Main */
+.cv-main {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* CV Sections */
+.cv-section {
+  margin-bottom: 2rem;
+}
+
+.section-header {
   display: flex;
-  width: 100%;
-  align-items: center; /* center image and content vertically */
-  gap: 0; /* no gap - parent provides spacing */
-  /* Remove min-height to match education/experience cards */
-  min-height: auto;
-  /* avoid inner border-radius/overflow so the outer timeline-content-project
-     supplies the white rounded card look and spacing (matches experience cards) */
-  border-radius: 0;
-  overflow: visible;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1rem;
 }
 
-
-
-.timeline-content-project .project-image {
-  width: 125px;
-  height: 125px;
-  flex-shrink: 0;
+.section-icon {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--primary-color, #4ade80);
   border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 0; /* remove inner padding so child <img> can fill the container */
-  box-sizing: border-box;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08);
-  transition: box-shadow 0.3s ease;
-  margin-right: 10px;
+  color: white;
+  font-size: 1.125rem;
 }
 
-.timeline-content-project .project-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* match education/experience logo style */
-  object-position: center center;
-  display: block;
-  border-radius: 4px;
+.cv-section h2 {
+  margin: 0;
+  font-size: 1.75rem;
+  color: var(--text-primary, #fff);
 }
 
-.timeline-content-project .project-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* center vertically like education/experience */
-  gap: 0;
-  padding: 0;
-  min-width: 0;
+/* CV Content wrapper */
+.cv-content {
+  margin-left: 0;
+  padding-left: 0;
 }
 
-/* Removed extra project styling - standardized with education/experience */
-
-/* Dark mode: increase card elevation and add subtle rim to be visible on dark backgrounds */
-@media (prefers-color-scheme: dark) {
-  .timeline-content-education,
-  .timeline-content-experience,
-  .timeline-content-project,
-  .timeline-content {
-    /* stronger, darker shadow with a faint light rim to separate from dark background */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 4px 10px rgba(0,0,0,0.4);
-    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    border: 1px solid rgba(255,255,255,0.03);
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cv-section h2 {
+    font-size: 1.5rem;
   }
 
-  /* Add a very subtle outer glow/rim on the top-left to give cards separation
-     without making them look like bright boxes. This helps on near-black pages. */
-  .timeline-content-education::after,
-  .timeline-content-experience::after,
-  .timeline-content-project::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 8px;
-    pointer-events: none;
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.02) inset;
-  }
-
-  /* Strengthen project-image contrast so photos keep their card feel */
-  .timeline-content-project .project-image {
-    background-color: rgba(255,255,255,0.06);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.6), 0 2px 6px rgba(0,0,0,0.35);
-  }
-
-  /* Slightly lighten title text for better contrast in dark mode */
-  .timeline-content-education .content-details h3,
-  .timeline-content-experience .content-details h3,
-  .timeline-content-project .project-content h3 {
-    color: #ffffff;
+  .section-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
   }
 }
 
-/* Responsive: stack image above content on small screens */
 @media (max-width: 640px) {
-  .timeline-content-project a.project-row {
-    flex-direction: column;
-    align-items: stretch; /* allow image to expand full width */
-    gap: 10px;
-    min-height: auto; /* let height grow with content */
+  .cv-header {
+    padding-top: 1.5rem !important;
   }
 
-  .timeline-content-project .project-image {
-    width: 100%;
-    /* use aspect-ratio for proportional scaling on stacked layout */
-    aspect-ratio: 4 / 3; /* wider images remain proportional */
-    border-radius: 8px;
+  .cv-section {
+    margin-bottom: 1.5rem;
   }
 
-  .timeline-content-project .project-content {
-    padding: 8px 4px; /* a little inner breathing room */
+  .section-header {
+    margin-bottom: 0.75rem;
   }
-
-  /* Stack education and experience cards: logo above content */
-  .timeline-content-education,
-  .timeline-content-experience {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
-  }
-
-  .timeline-content-education .university-logo,
-  .timeline-content-experience .company-logo {
-    width: 100%;
-    /* use square logo blocks for stacked layout */
-    aspect-ratio: 1 / 1;
-    border-radius: 8px;
-    margin: 0; /* remove any side margins */
-  }
-
-  .timeline-content-education .content-details,
-  .timeline-content-experience .content-details {
-    padding: 0 4px; /* small inner padding for stacked layout */
-  }
-}
-
-/* Extra-curricular and project timeline items should spread across the column */
-.timeline-content {
-  flex: 1 1 auto;
-  box-sizing: border-box;
-  padding: 8px; /* increased inner padding for extra-curriculars */
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.06);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-  margin-bottom: 0;
-}
-
-
-.timeline-content-education .university-logo img,
-.timeline-content-experience .company-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* show the whole logo instead of cropping */
-  object-position: center center;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: transparent;
-}
-
-.content-details {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-width: 0;
-  gap: 0;
-}
-
-.content-details .education-details,
-.content-details .experience-details {
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  /* center the inner details so text lines up with the logo */
-  justify-content: center;
-  min-width: 0;
-  gap: 0;
-}
-
-.timeline-content-education .content-details h3,
-.timeline-content-experience .content-details h3 {
-  /* more specific selector to override global h3 sizing */
-  color: var(--text-primary, #ffffff);
-  margin-bottom: 0;
-  margin-top: 0;
-  /* Title (School / Company) — highest priority */
-  font-size: 1.125rem !important;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-/* Projects: make heading match other section headings */
-.timeline-content-project .project-content h3 {
-  color: var(--text-primary, #ffffff);
-  margin-bottom: 0;
-  margin-top: 0;
-  font-size: 1.125rem; /* same as experience/company headings */
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.timeline-content-education .content-details h4,
-.timeline-content-experience .content-details h4 {
-  color: var(--text-primary, #ffffff);
-  margin-bottom: 0;
-  margin-top: 0;
-  /* Position / course — secondary priority */
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.timeline-content-education .content-details .role-description,
-.timeline-content-experience .content-details .role-description {
-  color: var(--text-secondary, #d1d5db);
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 1.4;
-  /* Description — tertiary priority */
-  font-size: 0.95rem;
-}
-
-/* Projects: use same role-description sizing/format as other sections */
-.timeline-content-project .project-content .role-description {
-  color: var(--text-secondary, #d1d5db);
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 1.4;
-  font-size: 0.95rem;
-}
-
-/* Subtitle under project title (similar to small paragraph under company name) */
-.timeline-content-project .project-content .project-subtitle {
-  margin: 0 0 4px 0;
-  color: var(--text-secondary, #9ca3af);
-  font-weight: 400;
-  font-size: 0.95rem;
-}
-
-/* Base role-description: paragraphs should not have list padding */
-.role-description {
-  margin: 0;
-  padding-left: 0; /* no indent for paragraph descriptions */
-  color: var(--text-secondary, #d1d5db);
-  line-height: 1.4;
-  font-size: 0.95rem;
-}
-
-/* List variant: when role-description is a UL apply bullets and indent */
-ul.role-description {
-  margin: 0;
-  padding-left: 1.25rem; /* make bullets indented but inside the card */
-  list-style: disc;
-  color: var(--text-secondary, #d1d5db);
-}
-
-.role-description li {
-  margin: 0;
-  line-height: 1.4;
-  font-size: 0.95rem;
 }
