@@ -103,24 +103,13 @@
     });
   }
 
-  // Mobile switch click
-  if (themeSwitchContainer) {
-    themeSwitchContainer.addEventListener('click', function (e) {
-      e.preventDefault();
-      toggleTheme();
-    });
-
-    // Allow keyboard activation
-    themeSwitchContainer.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        toggleTheme();
-      }
-    });
-  }
-
   // Initialize on page load
-  document.addEventListener('DOMContentLoaded', initTheme);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTheme);
+  } else {
+    // DOM already loaded, init immediately
+    initTheme();
+  }
 
   // Mobile navigation toggle - JavaScript-based approach
   const navTrigger = document.getElementById('nav-trigger');
