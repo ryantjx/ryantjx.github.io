@@ -1,28 +1,29 @@
 {% for edu in site.data.cv.education %}
-<div class="timeline-item">
-  <div class="timeline-content-education">
-    <div class="university-logo">
+<div class="card" style="margin-bottom: 12px;">
+  <div class="card-header" style="border-bottom: none;">
+    <div class="avatar avatar-square">
       <img src="{{ edu.logo }}" alt="{{ edu.institution }}">
     </div>
-    <div class="content-details">
-      <div class="education-details">
-        <div class="title-with-date">
-          <h3>{{ edu.institution }}</h3>
-          <span class="date-right">{{ edu.end_date }}</span>
-        </div>
-        <div class="content-area">
-          <div class="company-location">
-            <div class="course-info">
-              <h4>{{ edu.degree }}</h4>
-              <p class="grade-info"><strong>Grade:</strong> {{ edu.grade }}</p>
-            </div>
-            <h4 class="location-right">{{ edu.location }}</h4>
-          </div>
-          <p class="role-description">
-            {{ edu.courses | join: ', ' }}
+    <div class="card-header-text">
+      <div
+        style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 6px;">
+        <div style="flex: 1; min-width: 0;">
+          <h3 class="card-title" style="margin-bottom: 2px;">{{ edu.institution }}</h3>
+          <p class="card-description" style="margin-bottom: 6px;">{{ edu.degree }}</p>
+          <p style="margin: 0; color: var(--text-secondary, #9ca3af); font-size: 0.9rem;">
+            <strong>Grade:</strong> {{ edu.grade }}
           </p>
         </div>
+        <div style="display: flex; flex-direction: column; gap: 6px; align-items: flex-end;">
+          <span class="badge">{{ edu.end_date }}</span>
+          <span class="badge badge-outline">{{ edu.location }}</span>
+        </div>
       </div>
+      {% if edu.courses %}
+      <p style="margin: 6px 0 0 0; font-size: 0.9rem; line-height: 1.5; color: var(--text-secondary, #d1d5db);">
+        {{ edu.courses | join: ', ' }}
+      </p>
+      {% endif %}
     </div>
   </div>
 </div>

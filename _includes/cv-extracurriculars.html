@@ -1,5 +1,12 @@
-<ul class="role-description">
-  {% for item in site.data.cv.extracurriculars %}
-  <li>{{ item }}</li>
-  {% endfor %}
-</ul>
+<div class="card">
+  <div class="card-content">
+    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px;">
+      {% for item in site.data.cv.extracurriculars %}
+      <li style="display: flex; align-items: center; gap: 6px;">
+        <span style="color: var(--primary-color, #4ade80); font-size: 0.75rem;">●</span>
+        <span style="font-size: 0.95rem; line-height: 1.5; color: var(--text-secondary, #d1d5db);">{{ item }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

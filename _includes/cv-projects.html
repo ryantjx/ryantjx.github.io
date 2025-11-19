@@ -1,25 +1,30 @@
 {% for project in site.data.cv.projects %}
-<div class="timeline-item">
-  <div class="timeline-content-project">
-    {% if project.url != "" %}
-    <a class="project-row" href="{{ project.url }}">
-    {% else %}
-    <a class="project-row">
+{% if project.url != "" %}
+<a href="{{ project.url }}" style="text-decoration: none; color: inherit; display: block; margin-bottom: 12px;">
+  {% else %}
+  <div style="margin-bottom: 12px;">
     {% endif %}
-      <div class="project-image">
-        <img src="{{ project.image }}" alt="{{ project.title }}">
-      </div>
-      <div class="project-content">
-        <div class="title-with-date">
-          <h3>{{ project.title }}</h3>
-          <span class="date-right">{{ project.start_date }} - {{ project.end_date }}</span>
+    <div class="card">
+      <div class="card-header" style="border-bottom: none;">
+        <div class="avatar avatar-rectangle">
+          <img src="{{ project.image }}" alt="{{ project.title }}">
         </div>
-        <p class="project-subtitle"><i>{{ project.subtitle }}</i></p>
-        <p class="role-description">
-          {{ project.description }}
-        </p>
+        <div class="card-header-text">
+          <div
+            style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 6px;">
+            <h3 class="card-title" style="margin-bottom: 0;">{{ project.title }}</h3>
+            <span class="badge">{{ project.start_date }} - {{ project.end_date }}</span>
+          </div>
+          <p class="card-description" style="margin-bottom: 8px;"><em>{{ project.subtitle }}</em></p>
+          <p style="margin: 0; font-size: 0.9rem; line-height: 1.5; color: var(--text-secondary, #d1d5db);">
+            {{ project.description }}
+          </p>
+        </div>
       </div>
-    </a>
-  </div>
+    </div>
+    {% if project.url != "" %}
+</a>
+{% else %}
 </div>
+{% endif %}
 {% endfor %}
