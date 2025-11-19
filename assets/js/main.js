@@ -81,9 +81,25 @@
 
   // Event listeners
   if (themeToggle) {
-    themeToggle.addEventListener('click', function (e) {
+    themeToggle.addEventListener('click', function(e) {
       e.preventDefault();
       toggleTheme();
+    });
+  }
+
+  // Mobile switch click
+  if (themeSwitchContainer) {
+    themeSwitchContainer.addEventListener('click', function(e) {
+      e.preventDefault();
+      toggleTheme();
+    });
+
+    // Allow keyboard activation
+    themeSwitchContainer.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleTheme();
+      }
     });
   }
 
